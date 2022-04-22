@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Configuração nome/texto arquivo</title>
+
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.min.css">
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.bootstrap5.min.css">
+    <script src="../lib/tom-select/js/tom-select.complete.min.js"></script>
+
+    <script src="../lib/pdf.worker.js"></script>
+    <script src="../lib/pdf.js"></script>
+    <script src="../modules/tools/Geral.js"></script>
+    <script src="../modules/tools/ExtrairDados.js"></script>
+    <script src="../comunicacaoBGWorker.js"></script>
+    <script src="texto.js"></script>
+
+
+
+    <style>
+        [type="select-multiple"] {
+            width: 100%;
+        }
+
+
+        .vertical {
+            white-space: nowrap;
+            align-self: center;
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            text-align: center;
+            /* flex: 1;  */
+        }
+
+        .table_procuras>tbody>tr:nth-child(even)>td:nth-child(1) {
+            background: #CCCC;
+        }
+
+        .table_paragrafos>tbody>tr:nth-child(odd)>td:nth-child(1) {
+            background: #CCCC;
+        }
+    </style>
+</head>
+
+<body style="background-color: aliceblue;">
+    <div class="container">
+
+        <!-- menu content dados pelo texto-->
+
+        <h2>Configurações: selecionar anexo e capturar dados a partir do nome do arquivo ou do texto do arquivo
+        </h2>
+        <div class="input-group mb-3">
+            <select class="form-select" id="select_editar_parametro"
+                aria-placeholder="Selecione um parametro para editar ou usar como exemplo"
+                aria-label="Example select with button addon">
+                <option value="" selected></option>
+            </select>
+            <button class="btn btn-outline-secondary" type="button" id="btn_editar_parametro">Editar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_salvar_parametro">Salvar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_adicionar_parametro">Adicionar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_limpar_parametro">Limpar editor</button>
+            <button class="btn btn-outline-danger" type="button" id="btn_excluir_parametro">Excluir</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_download">Download</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_upload">Upload</button>
+        </div>
+        <input class="visually-hidden" type="file" id="input_upload">
+        <hr>
+        <div class="input-group mb-3">
+            <select class="form-select" id="select_modelo_parametro" aria-placeholder="Adicionar modelo de captura"
+                aria-label="Adicionar modelo de captura">
+                <option value="" selected></option>
+            </select>
+            <button class="btn btn-outline-secondary" type="button" id="btn_add_modelo_parametro">Adicionar
+                modelo de captura</button>
+        </div>
+        <hr>
+        <div id="div_parametro">
+            <div id="parametro_principal">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="nomeParametro">Nome</label>
+                    <input type="text" aria-label="Nome do parâmetro" class="form-control" id="nomeParametro">
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="descricao">Descrição</label>
+                    <input type="text" aria-label="Nome do parâmetro" class="form-control" id="descricao">
+                </div>
+
+                <hr>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="nivelAcesso">Nível de acesso do documento</label>
+                    <select class="form-control" size="1" id="nivelAcesso">
+                        <option value="público" selected>Público</option>
+                        <option value="restrito">Restrito</option>
+                        <option value="sigiloso">Sigiloso</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3" hidden="true">
+                    <label class="input-group-text" for="hipoteseLegal" title="Insira o texto completo da hipótese ou apenas o início dela (lembrando que se outra hipótese tiver o mesmo início a extensão pode selecionar ela)">Hipótese legal em caso de ser acesso
+                        restrito</label>
+                    <input type="text" list="hipotesesCarregadas" class="form-control" id="hipoteseLegal">
+                    <datalist id="hipotesesCarregadas">
+                    </datalist>
+                </div>
+                <hr>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="unidadesDeTrabalho"
+                        title="Unidades de trabalho que utiliza este parametro">Selecionar as unidades que utilizam essa
+                        configuração</label>
+                    <select class="form-control" multiple size="2" id="unidadesDeTrabalho">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="desativado">
+                    <label style="padding-left: 6pt;" for="desativado" data-bs-toggle="tooltip"
+                        data-bs-placement="top">Deixar desativado este parametro Regex</label>
+                </div>
+                <div class="form-check mb-3 " hidden="true">
+                    <input class="form-check-input" type="checkbox" id="atualizarJuntoComAExtensao">
+                    <label style="padding-left: 6pt;" for="atualizarJuntoComAExtensao" data-bs-toggle="tooltip"
+                        data-bs-placement="top">Manter atualizado o parametro. (Mantem atualizado o parametro caso ele
+                        faça parte do código fonte do programa)</label>
+                </div>
+                <hr>
+
+                <div class="form-check mb-3" hidden="true">
+                    <input class="form-check-input" type="checkbox" id="inserirAnexo">
+                    <label style="padding-left: 6pt;" for="inserirAnexo" data-bs-toggle="tooltip"
+                        data-bs-placement="top">Caso falso, ele usará o arquivo apenas para coletar dados para inserir
+                        no formulário, não será enviado para o processo SEI</label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lerArquivoComoTexto">
+                            <label style="padding-left: 6pt;" for="lerArquivoComoTexto" data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Tenta abrir o arquivo como texto (não funciona em arquivos de imagens, zipados, codificados etc.)">Ler
+                                texto do arquivo</label>
+                        </div>
+                    </span>
+                    <button class="btn btn-outline-danger" type="button"
+                        id="btn_input_tentar_ler_arquivo_como_texto">Ler um arquivo como texto</button>
+                    <input class="form-control invisible" type="file" id="input_tentar_ler_arquivo_como_texto"></input>
+                </div>
+                <hr>
+
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="tipo">Selecionar anexo</label>
+                    <select class="form-select form-select-sm" id="tipo" multiple="multiple"
+                        aria-label=".form-select-sm example"></select>
+                </div>
+                <hr>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="exemploUtilizado">Texto para teste</label>
+                    <textarea class="form-control" rows="2" id="exemploUtilizado"></textarea>
+                </div>
+                <hr>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="rx">Regex</label>
+                    <input type="text" aria-label="Regex" class="form-control" id="rx" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="flags">Flags</label>
+                    <input type="text" aria-label="Flags" class="form-control" id="flags" value="i">
+                </div>
+                <div class="input-group mb-3" hidden="true">
+                    <label class="input-group-text" for="nomeLista" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Se inserir'g' nas flags, de um nome para a
+                            lista">Nome da lista</label>
+                    <input type="text" aria-label="Nome lista" class="form-control" id="nomeLista" value="">
+                </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="nomeGrupo" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Criar um nome para agrupar essa
+                            informação">Inserir dados coletados dentro de um objeto</label>
+                    <input type="text" aria-label="Nome grupo" class="form-control" id="nomeGrupo"
+                        placeholder="Nome do grupo" value="">
+                </div>
+            </div>
+
+            <!-- <table class="table_procuras w-100" style="border-spacing: 0;border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td colspan="2">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-4">Captura de dados adicionais:</div>
+                                    <div class="col-md-4 offset-md-4">
+                                        <button id="adicionarProcura" type="button" class="btn btn-outline-secondary btn-sm float-end border-0">Adicionar procura</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody id="outros_parametros">
+                    <tr id="outros_parametros_model">
+                        <td id="procuraNumero" class="vertical border"
+                            style="min-width: 30px;max-width: 30px;padding: 0%;border: 0px;">
+                            PROCURA 1
+                        </td>
+                        <td class="border" style="width: 100%; padding: 0%;border: 0px;">
+
+
+                        </td>
+                    </tr>
+                </tbody> 
+            </table> -->
+            <ul class="list-group" id="outros_parametros">
+
+                <li class="list-group-item list-group-flush bg-transparent" id="outros_parametros_model">
+                    <div>
+                        <button title="Excluir esta procura" id="excluir_adicional" type="button"
+                            class="btn btn-outline-secondary btn-sm float-end border-0">X</button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="descricao">Descrição</label>
+                        <input type="text" aria-label="Descrição" class="form-control" id="descricao">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="rx">Regex</label>
+                        <input type="text" aria-label="Regex" class="form-control" id="rx" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="flags">Flags</label>
+                        <input type="text" aria-label="Regex" class="form-control" id="flags" value="">
+                    </div>
+                    <div class="input-group mb-3" hidden="true">
+                        <label class="input-group-text" for="nomeLista">Se inserir"g" nas flags, de um nome para a
+                            lista</label>
+                        <input type="text" aria-label="Regex" class="form-control" id="nomeLista" value="">
+                    </div>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="nomeGrupo">Criar um objeto separado para essa
+                            captura</label>
+                        <input type="text" aria-label="Regex" class="form-control" id="nomeGrupo" value="">
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <!-- <p>Valor de saída / configuração gerada:</p> -->
+        <pre id="valorSaida" style="width:100%;font: inherit;font-size: medium;"></pre>
+
+        <pre id="log"></pre>
+        <!-- menu content dados pelo texto-->
+
+    </div>
+
+</body>
+
+</html>

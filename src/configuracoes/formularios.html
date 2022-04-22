@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Configuração dos formulários</title>
+
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.min.css">
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.bootstrap5.min.css">
+    <script src="../lib/tom-select/js/tom-select.complete.min.js"></script>
+
+    <script src="../lib/pdf.worker.js"></script>
+    <script src="../lib/pdf.js"></script>
+    <script src="../modules/tools/Geral.js"></script>
+    <script src="../modules/tools/ExtrairDados.js"></script>
+    <script src="../comunicacaoBGWorker.js"></script>
+    <script src="formularios.js"></script>
+
+
+
+
+
+
+    <style>
+        [type="select-multiple"] {
+            width: 100%;
+        }
+
+        .vertical {
+            white-space: nowrap;
+            align-self: center;
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            text-align: center;
+            /* flex: 1;  */
+        }
+
+        .table_procuras>tbody>tr:nth-child(even)>td:nth-child(1) {
+            background: #CCCC;
+        }
+
+        .table_paragrafos>tbody>tr:nth-child(odd)>td:nth-child(1) {
+            background: #CCCC;
+        }
+
+        .tempHide {
+            animation: hideMe 0s ease-in 4s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes hideMe {
+            to {
+                visibility: hidden;
+                width: 0;
+                height: 0;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: aliceblue;">
+    <div class="container">
+        <!-- formulários start -->
+        <h2 class="mb-3">Configurações: Editar/Criar dados relativos a criação de formulários</h2>
+        <div class="input-group mb-3">
+            <select class="form-select" id="select_editar_formulario">
+                <option value="" selected></option>
+            </select>
+            <button class="btn btn-outline-secondary" type="button" id="btn_editar_formulario">Editar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_salvar_formulario">Salvar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_adicionar_formulario">Adicionar</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_limpar_formulario">Limpar editor</button>
+            <button class="btn btn-outline-danger" type="button" id="btn_excluir_formulario">Excluir</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_download">Download</button>
+            <button class="btn btn-outline-secondary" type="button" id="btn_upload">Upload</button>
+        </div>
+        <input class="visually-hidden" type="file" id="input_upload">
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="nome">Nome da configuração</label>
+            <input type="text" aria-label="inputaria" class="form-control" title="Nome da configuração"
+                id="nome">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="btnColorFormulario">Selecione a cor do botão</label>
+            <input type="color" aria-label="Selecione a cor do botão" class="form-control form-control-color"
+                title="Selecione a cor do botão" id="btnColorFormulario">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="qntItensSelecionados">No mínimo quantos anexos precisam estar
+                selecionados?</label>
+            <input type="number" class="form-control form-control-number" value="1" id="qntItensSelecionados">
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="nivelAcesso">Escolha o nível de acesso</label>
+            <select class="form-select" id="nivelAcesso">
+                <option value="público" selected>Público</option>
+                <option value="restrito">Restrito</option>
+                <option value="sigiloso">Sigiloso</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="numeroModelo">Número do modelo de documento para gerar o
+                formulário(opcional)</label>
+            <input type="number" class="form-control form-control-number" value="0" id="numeroModelo">
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="btnGerarFormulario">
+            <label style="padding-left: 6pt;" for="btnGerarFormulario" data-bs-toggle="tooltip"
+                data-bs-placement="top">Adicionar botão para gerar o formulário</label>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="sempreMostarBtn">
+            <label style="padding-left: 6pt;" for="sempreMostarBtn" data-bs-toggle="tooltip"
+                title="O botão aparece apenas se estiver clicado em algum anexo correspondente, deseja mostrar o botão mesmo sem selecionar?\n é útil quando queira usar um arquivo fora do SEI para gerar as informações do formulário"
+                data-bs-placement="top">deseja sempre mostrar o botão mesmo sem selecionar anexo?</label>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="nomeFormulario">Escolha o tipo de formulário a ser
+                preenchido</label>
+            <select class="form-select" id="nomeFormulario" multiple="true">
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="descricaoDoFormulario">Texto para descrição do processo</label>
+            <textarea class="form-control" name="descricaoDoFormulario" id="descricaoDoFormulario" cols="30"
+                rows="1"></textarea>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="observacoesDoFormulario">Texto para observações do
+                processo</label>
+            <textarea class="form-control" name="observacoesDoFormulario" id="observacoesDoFormulario" cols="30"
+                rows="1"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="filtrarNomes"
+                title="caso selecione outros tipos de anexos eles serão descartados">Escolher documentos para
+                <br>o formulário aparecer:</label>
+            <select class="form-control" multiple size="2" id="filtrarNomes">
+                <option value=""></option>
+            </select>
+        </div>
+        <table class="table_procuras w-100" style="border-spacing: 0;border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-4">Texto para procurar:</div>
+                                <div class="col-md-4 offset-md-4">
+                                    <button id="adicionarProcura" type="button" class="btn btn-outline-secondary btn-sm float-end border-0">Adicionar procura</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="procurarInserirParagrafos">
+                <tr id="procurarInserirParagrafo_0">
+                    <td id="procuraNumero" class="vertical border"
+                        style="min-width: 30px;max-width: 30px;padding: 0%;border: 0px;">
+                        PROCURA 1
+                    </td>
+                    <td class="border" style="width: 100%; padding: 0%;border: 0px;">
+                        <div>
+                            <button title="Excluir esta procura" id="excluirProcura" type="button"
+                                class="btn btn-outline-secondary btn-sm float-end border-0">X</button>
+                        </div>
+                        <div class="input-group my-3">
+                            <label class="input-group-text" for="textoParaProcurar">Procurar
+                                texto</label>
+                            <textarea class="form-control" name="textoParaProcurar" id="textoParaProcurar" cols="30"
+                                rows="1"></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="remover">
+                            <label style="padding-left: 6pt;" for="remover" data-bs-toggle="tooltip"
+                                data-bs-placement="top">Remover paragrafo ao localizar o
+                                texto?</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="posicaoParaInserir">Selecionar a
+                                posição para
+                                inserir
+                                novos paragrafos:</label>
+                            <select class="form-select" id="posicaoParaInserir">
+                                <option value="antes" selected>Antes de iniciar o paragrafo</option>
+                                <option value="apos">Após o término do paragrafo</option>
+                                <option value="substituir">Substituir apenas o texto dentro do
+                                    paragrafo
+                                </option>
+                                <option value="substituir_paragrafo">Substituir o paragrafo com o
+                                    novo
+                                    texto
+                                </option>
+                            </select>
+                        </div>
+                        <table class="table-bordered table_paragrafos w-100"
+                            style="border-spacing: 0;border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        <div class="w-100">
+                                            <div class="row">
+                                                <div class="col-md-4">Paragrafos para adicionar ao encontrar:</div>
+                                                <div class="col-md-4 offset-md-4">
+                                                    <button id="adicionarParagrafo" type="button" class="btn btn-outline-secondary btn-sm float-end h-100 border-0">Adicionar paragrafo</button>
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="paragrafos">
+                                <tr id="paragrafo_0">
+                                    <td id="paragrafoNumero" class="vertical" style="min-width: 30px;max-width: 30px;">
+                                        PARAGRAFO 1
+                                    </td>
+                                    <td style="width: 100%;">
+                                        <div>
+                                            <button title="Excluir este paragrafo" id="excluirParagrafo" type="button"
+                                                class="btn btn-outline-secondary btn-sm float-end border-0">X</button>
+                                        </div>
+                                        <div class="input-group mb-3 mt-1">
+                                            <label class="input-group-text" for="estilo">Estilo</label>
+                                            <input list="estilos" type="text" class="form-control" id="estilo">
+
+                                        </div>
+                                        <div class="input-group mb-1">
+                                            <label class="input-group-text" for="texto">Texto ou formula<br>para
+                                                substituir o<br>
+                                                texto encontrado
+                                            </label>
+                                            <textarea class="form-control" name="texto" id="texto" cols="30"
+                                                rows="2"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </br>
+
+        <datalist id="estilos">
+        </datalist>
+        <div id="log"></div>
+        <!-- formulários start -->
+
+    </div>
+
+    </div>
+
+</body>
+
+</html>

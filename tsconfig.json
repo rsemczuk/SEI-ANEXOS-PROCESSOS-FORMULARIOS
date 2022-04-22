@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "removeComments": true,
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "target": "ES2017",
+        "lib": [
+            "DOM",
+            "ES2017"
+        ]
+    }
+}

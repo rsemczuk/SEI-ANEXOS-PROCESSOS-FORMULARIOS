@@ -1,0 +1,1009 @@
+class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
+    private srcImgCopiarLinkInterno = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTUuOTk5OTk5IgogICBoZWlnaHQ9IjE2IgogICB2aWV3Qm94PSIwIDAgNC4yMzMzMzMgNC4yMzMzMzMyIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9ImNvcGlhci5zdmciCiAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSIyNS40IgogICBpbmtzY2FwZTpleHBvcnQteWRwaT0iMjUuNCIKICAgc29kaXBvZGk6ZG9jbmFtZT0iY29waWFyMS5zdmciCiAgIGlua3NjYXBlOnZlcnNpb249IjEuMy1kZXYgKDUyNWFiZWFkLCAyMDIyLTA0LTE5KSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzciCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9InRydWUiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIHNob3dib3JkZXI9ImZhbHNlIgogICAgIGJvcmRlcmxheWVyPSJ0cnVlIgogICAgIHNoYXBlLXJlbmRlcmluZz0iYXV0byIKICAgICBpbmtzY2FwZTp6b29tPSIzMiIKICAgICBpbmtzY2FwZTpjeD0iLTEuODU5Mzc1IgogICAgIGlua3NjYXBlOmN5PSI4LjcxODc1IgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTkyMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMDA5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJnMzQ3MCIKICAgICBzaG93Z3VpZGVzPSJmYWxzZSIgLz4KICA8ZGVmcwogICAgIGlkPSJkZWZzMiI+CiAgICA8bGluZWFyR3JhZGllbnQKICAgICAgIGlkPSJsaW5lYXJHcmFkaWVudDI2NTEiCiAgICAgICBpbmtzY2FwZTpzd2F0Y2g9InNvbGlkIj4KICAgICAgPHN0b3AKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MTsiCiAgICAgICAgIG9mZnNldD0iMCIKICAgICAgICAgaWQ9InN0b3AyNjQ5IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcKICAgICBpbmtzY2FwZTpsYWJlbD0iQ2FtYWRhIDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIj4KICAgIDxnCiAgICAgICBpZD0iZzM0NzAiPgogICAgICA8ZwogICAgICAgICBpZD0iZzM1NjYiCiAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuOTk2MDU4MTEsMCwwLDAuOTk2MDU4MTEsMS41MTc2NTksMC4yNjM1NDA1MykiPgogICAgICAgIDxwYXRoCiAgICAgICAgICAgaWQ9InJlY3QzNDg0IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjUxNTgxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICAgIGQ9Ik0gLTAuODY2NjEzNzYsMC4zNDcyNjU2MyBWIDMuODU5NzEyNyBIIDEuNjU5MzMwMiBWIDEuMTAwMTkxMiBMIDAuNzUzOTU5MTQsMC4zNDcyNjU2MyBaIiAvPgogICAgICAgIDxwYXRoCiAgICAgICAgICAgaWQ9InJlY3QzNDM1IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjUxNTgxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICAgIGQ9Im0gMS4yOTQ0MzI1LC0wLjEzODc5Mjk4IDAuODUxNzU0MiwwLjg1NzE0MTMgViAzLjM4MjAxMjkgaCAtMi41MTg1MTE5MyB2IC0zLjUyMDgwNTg4IHoiIC8+CiAgICAgICAgPHBhdGgKICAgICAgICAgICBpZD0icmVjdDM0MzciCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yMjAzMztzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBkPSJtIDEuMjcxMDA5OCwwLjAwMzE3NTU3IDAuNzMzNDU2MywwLjczNzMzMjkgSCAxLjI3MTAwOTggWiIgLz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+Cg==';
+    private srcImgCopiarLinkExterno = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTUuOTk5OTk5IgogICBoZWlnaHQ9IjE2IgogICB2aWV3Qm94PSIwIDAgNC4yMzMzMzMgNC4yMzMzMzMyIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9ImNvcGlhcjEuc3ZnIgogICBpbmtzY2FwZTpleHBvcnQteGRwaT0iMjUuNCIKICAgaW5rc2NhcGU6ZXhwb3J0LXlkcGk9IjI1LjQiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNvcGlhcjEuc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMtZGV2ICg1MjVhYmVhZCwgMjAyMi0wNC0xOSkiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXc3IgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSJ0cnVlIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9Im1tIgogICAgIHNob3dncmlkPSJmYWxzZSIKICAgICBzaG93Ym9yZGVyPSJmYWxzZSIKICAgICBib3JkZXJsYXllcj0idHJ1ZSIKICAgICBzaGFwZS1yZW5kZXJpbmc9ImF1dG8iCiAgICAgaW5rc2NhcGU6em9vbT0iMzIiCiAgICAgaW5rc2NhcGU6Y3g9Ii0yLjU3ODEyNSIKICAgICBpbmtzY2FwZTpjeT0iOC43MTg3NSIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTAwOSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0iZzM0NzAiCiAgICAgc2hvd2d1aWRlcz0iZmFsc2UiIC8+CiAgPGRlZnMKICAgICBpZD0iZGVmczIiPgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQyNjUxIgogICAgICAgaW5rc2NhcGU6c3dhdGNoPSJzb2xpZCI+CiAgICAgIDxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDAwMDA7c3RvcC1vcGFjaXR5OjE7IgogICAgICAgICBvZmZzZXQ9IjAiCiAgICAgICAgIGlkPSJzdG9wMjY0OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkNhbWFkYSAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSI+CiAgICA8ZwogICAgICAgaWQ9ImczNDcwIj4KICAgICAgPGcKICAgICAgICAgaWQ9ImczNTY2IgogICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjk5NjA1ODExLDAsMCwwLjk5NjA1ODExLDEuNTE3NjU5LDAuMjYzNTQwNTMpIgogICAgICAgICBzdHlsZT0iZmlsbDojZTNlMmRiO2ZpbGwtb3BhY2l0eToxIgogICAgICAgICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9Ii5cY29waWFyMS5zdmciCiAgICAgICAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSIyNS40IgogICAgICAgICBpbmtzY2FwZTpleHBvcnQteWRwaT0iMjUuNCI+CiAgICAgICAgPHBhdGgKICAgICAgICAgICBpZD0icmVjdDM0ODQiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2UzZTJkYjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTE1ODE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgZD0iTSAtMC44NjY2MTM3NiwwLjM0NzI2NTYzIFYgMy44NTk3MTI3IEggMS42NTkzMzAyIFYgMS4xMDAxOTEyIEwgMC43NTM5NTkxNCwwLjM0NzI2NTYzIFoiIC8+CiAgICAgICAgPHBhdGgKICAgICAgICAgICBpZD0icmVjdDM0MzUiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2UzZTJkYjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNTE1ODE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgZD0ibSAxLjI5NDQzMjUsLTAuMTM4NzkyOTggMC44NTE3NTQyLDAuODU3MTQxMyBWIDMuMzgyMDEyOSBoIC0yLjUxODUxMTkzIHYgLTMuNTIwODA1ODggeiIgLz4KICAgICAgICA8cGF0aAogICAgICAgICAgIGlkPSJyZWN0MzQzNyIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZTNlMmRiO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjIyMDMzO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICAgIGQ9Im0gMS4yNzEwMDk4LDAuMDAzMTc1NTcgMC43MzM0NTYzLDAuNzM3MzMyOSBIIDEuMjcxMDA5OCBaIiAvPgogICAgICA8L2c+CiAgICAgIDx0ZXh0CiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgICAgICAgIHN0eWxlPSJmb250LXNpemU6Mi43Mjg5cHg7ZmlsbDojMDAwMDAwO3N0cm9rZTojNWExNzE3O3N0cm9rZS13aWR0aDowLjIyNzQwOTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICB4PSIxLjI3NzU3NTkiCiAgICAgICAgIHk9IjMuMjQwMjA4NCIKICAgICAgICAgaWQ9InRleHQzOTgiPjx0c3BhbgogICAgICAgICAgIHNvZGlwb2RpOnJvbGU9ImxpbmUiCiAgICAgICAgICAgaWQ9InRzcGFuMzk2IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjAuMjI3NDA5O3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgeD0iMS4yNzc1NzU5IgogICAgICAgICAgIHk9IjMuMjQwMjA4NCI+RTwvdHNwYW4+PC90ZXh0PgogICAgPC9nPgogIDwvZz4KPC9zdmc+Cg==';
+    private srcImgAlterarnivelAcesso = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTYiCiAgIGhlaWdodD0iMTYiCiAgIHZpZXdCb3g9IjAgMCA0LjIzMzMzMjggNC4yMzMzMzI4IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMtZGV2ICg1MjVhYmVhZCwgMjAyMi0wNC0xOSkiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNoYXZlLnN2ZyIKICAgaW5rc2NhcGU6ZXhwb3J0LWZpbGVuYW1lPSJjaGF2ZS5zdmciCiAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSI5NiIKICAgaW5rc2NhcGU6ZXhwb3J0LXlkcGk9Ijk2IgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzciCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjMyLjAwMDAwMSIKICAgICBpbmtzY2FwZTpjeD0iMC40ODQzNzQ5OCIKICAgICBpbmtzY2FwZTpjeT0iNy44NDM3NDk3IgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTkyMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMDA5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3cteT0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMSIKICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJsYXllcjEiIC8+CiAgPGRlZnMKICAgICBpZD0iZGVmczIiPgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ5OTAiPgogICAgICA8c3RvcAogICAgICAgICBzdHlsZT0ic3RvcC1jb2xvcjojYTk4MjVhO3N0b3Atb3BhY2l0eToxOyIKICAgICAgICAgb2Zmc2V0PSIwIgogICAgICAgICBpZD0ic3RvcDk4NiIgLz4KICAgICAgPHN0b3AKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6IzI4MjIwYjtzdG9wLW9wYWNpdHk6MDsiCiAgICAgICAgIG9mZnNldD0iMSIKICAgICAgICAgaWQ9InN0b3A5ODgiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjbGluZWFyR3JhZGllbnQ5OTAiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ5OTIiCiAgICAgICB4MT0iMi4xODAzNzAyIgogICAgICAgeTE9IjIuNTcwMDExOSIKICAgICAgIHgyPSIyLjQ0NjYxNjciCiAgICAgICB5Mj0iMi41NzAwMTE5IgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuODcwMTcxNSwxLjQ4Mzg5ODQsMC40ODk1NDMxMywtMC42MTY5NzU5NiwyLjk1NzE4NTYsLTIuMTU5NTgxNikiIC8+CiAgPC9kZWZzPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkNhbWFkYSAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSI+CiAgICA8ZwogICAgICAgaWQ9Imc0MjQiCiAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLjg4MzIzNTcsMCwwLDAuNjIxMjg1ODgsLTEuODQzMDI4NywwLjczNzgwNDc3KSIKICAgICAgIHN0eWxlPSJmaWxsOiNmZmRkNTUiIC8+CiAgICA8cGF0aAogICAgICAgaWQ9InJlY3QyNTAyIgogICAgICAgc3R5bGU9ImZpbGw6dXJsKCNsaW5lYXJHcmFkaWVudDk5Mik7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjAiCiAgICAgICBkPSJNIDguODQzMjA0MiwtMS41NzkzMjIgNy4zNjg1ODcyLDAuMjc5MTUyMDYgOC4wNTM2MDI0LDAuODE0NTQ3NTYgOC41NzE4MDc4LDAuMTU1MTg3NjYgOC4xNjU2NTQ4LC0wLjMyNTM5IDguNzQyMjEwOSwtMC4xMzg1NzI1NCA4LjY4NTAxNjksLTAuNTAwMjk3MSA5LjAwNzM4MTMsLTAuNDg5MjY4NyA5LjE5NTg4NDYsLTAuNTAzNDgxOCBjIDAuMDYzMjI1LC0wLjAxMzYzMSAwLjA2MDk2NSwtMC4yNjYxNjMzNyAwLjAxNzIwMiwtMC4yMzk2NzM2MiBsIDAuMDkxNTQ5LC0wLjA2NTI1MjUgMC4wNDg0MzYsLTAuMTYzNTQ5NiAtMC4xMDkxNTk4LC0wLjE5ODU5ODk4IC0wLjA5MDMzNiwtMC4xMzI1MjIyIC0wLjA3NTUwOSwtMC4wOTgwMjUgeiIKICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjY2NjY2NjY2NjY2NjYyIgLz4KICAgIDxnCiAgICAgICBpZD0iZzY5MjEiCiAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLjAzODMwMywwLDAsMS4wMzgzMDMsLTAuMTU1NzA4MDksLTAuMDM2MjA0MTEpIj4KICAgICAgPHBhdGgKICAgICAgICAgaWQ9InJlY3QyNDAzIgogICAgICAgICBzdHlsZT0iZmlsbDojZmZkZDU1O3N0cm9rZTojNWExNzE3O3N0cm9rZS13aWR0aDowLjAyMzM0MzkiCiAgICAgICAgIGQ9Ik0gMi44ODMzNjEyLDAuMDg5MDEwMjggMS42NDUzNjkzLDEuNjUyNDI4OCBjIC0wLjA2MzA1MiwwLjA3OTYyNiAwLjA0OTYsMC4yNzMzODk5IDAuMjUyNzU2NiwwLjQzNDU4NTQgTCAyLjM5MTI5MDYsMi40NzgzMTg3IEMgMi41OTQ0NDc5LDIuNjM5NTE1IDIuODA4ODI0NCwyLjcwNTIzMzkgMi44NzE5NTQ3LDIuNjI1NjcwMSBMIDMuMTUwMDA4OSwyLjE2OTYyOTIgYyAwLDAgLTAuMTAwODA0NSwtMC40MTcyMDU0IC0wLjIwODYzMjcsLTAuODQ4MDA0NyAwLjI2NjM0OSwwLjA0ODYxNSAwLjI1ODg3OTksMC4wNDY1MjUgMC42NzEyOTksMC4xMjg2NTYzIEMgMy40ODI0ODkzLDEuMTE2NDU3OSAzLjQ4MzAzMTgsMS4xMTI3MjA2IDMuMzgwNzgyNSwwLjc5NTU5NDY0IDMuNjcxMjk3LDAuODQwMjI1ODggMy42NzE5NTg1LDAuODM5MzUxNiAzLjk3MTkxNjQsMC44ODM3NDQzMSA0LjAzMzAwMzQsMC43OTM4MDg1NiA0LjAzMTkxNzQsMC43ODc4MTk5MiA0LjA5NjI0MzMsMC42ODc0MTU4NCA0LjA4OTQ3MTcsMC42NDU0MDc4NiA0LjAxODkwMTUsMC41MjAwODQwOSAzLjkwNTIwNjUsMC4zNDg0NzA4OCAzLjgyODY4OTUsMC4yMzI5NzQ3MSAzLjg3MDg2NDgsMC4yOTcwMzUzOCAzLjcwNTgyNywwLjA0Njg0NzE2IDMuMzQ1MjYxLDAuMDY0MjI3MjkgMy4yMjczMTQxLDAuMDcyNTkxNzIgMi44ODMzNjEyLDAuMDg5MDEwMjggWiIKICAgICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjc3Nzc2NjY2NjY3NjYyIgLz4KICAgICAgPGcKICAgICAgICAgaWQ9Imc2OTEzIgogICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjg4MTY5NzQyLDAsMCwwLjg4MTY5NzQyLDAuMTI3NTg1MjEsMC40NDI3MjM3OCkiPgogICAgICAgIDxnCiAgICAgICAgICAgaWQ9Imc2OTA3Ij4KICAgICAgICAgIDxyZWN0CiAgICAgICAgICAgICBzdHlsZT0iZmlsbDojODA4MDgwO3N0cm9rZTojNWExNzE3O3N0cm9rZS13aWR0aDowLjAyMjMzNDIiCiAgICAgICAgICAgICBpZD0icmVjdDE4NCIKICAgICAgICAgICAgIHdpZHRoPSIyLjIxMjExNzIiCiAgICAgICAgICAgICBoZWlnaHQ9IjIuOTEzNTA3OSIKICAgICAgICAgICAgIHg9Ii0wLjI2MzcxMzI3IgogICAgICAgICAgICAgeT0iMS41Njk3MjUyIgogICAgICAgICAgICAgcnk9IjAuNDAxODYzMjUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgtMC42MjE1NjQxMiwwLjc4MzM2MzI5LDAuNzgzMzYzMjksMC42MjE1NjQxMiwwLDApIiAvPgogICAgICAgICAgPHJlY3QKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmQ0MmE7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgICAgICAgaWQ9InJlY3QxODQtMyIKICAgICAgICAgICAgIHdpZHRoPSIyLjAwNzY2NjEiCiAgICAgICAgICAgICBoZWlnaHQ9IjIuNjQ0MjMyMyIKICAgICAgICAgICAgIHg9Ii0wLjE2NTQ1OTM1IgogICAgICAgICAgICAgeT0iMS43MDAyNTE5IgogICAgICAgICAgICAgcnk9IjAuMzY0NzIxNzIiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgtMC42MjE1NjQxMiwwLjc4MzM2MzI5LDAuNzgzMzYzMjksMC42MjE1NjQxMiwwLDApIiAvPgogICAgICAgIDwvZz4KICAgICAgICA8ZWxsaXBzZQogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgICAgIGlkPSJwYXRoMjczMCIKICAgICAgICAgICBjeD0iMS4zMTIzMjA4IgogICAgICAgICAgIGN5PSIyLjk3OTQ0MDIiCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoLTAuNjIxNTY0MTIsMC43ODMzNjMyOSwwLjc4MzM2MzI5LDAuNjIxNTY0MTIsMCwwKSIKICAgICAgICAgICByeD0iMC4xNDc2NjAxNyIKICAgICAgICAgICByeT0iMS4wMzc3MTE5IiAvPgogICAgICA8L2c+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K';
+
+    private srcImgCopiarLinkInternoCancelado = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTUuOTk5OTk5IgogICBoZWlnaHQ9IjE2IgogICB2aWV3Qm94PSIwIDAgNC4yMzMzMzMgNC4yMzMzMzMyIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9ImNvcGlhci5zdmciCiAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSIyNS40IgogICBpbmtzY2FwZTpleHBvcnQteWRwaT0iMjUuNCIKICAgc29kaXBvZGk6ZG9jbmFtZT0iY29waWFyLnN2ZyIKICAgaW5rc2NhcGU6dmVyc2lvbj0iMS4zLWRldiAoNTI1YWJlYWQsIDIwMjItMDQtMTkpIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3NyIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiMwMDAwMDAiCiAgICAgYm9yZGVyb3BhY2l0eT0iMC4yNSIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0idHJ1ZSIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMC4wIgogICAgIGlua3NjYXBlOnBhZ2VjaGVja2VyYm9hcmQ9IjAiCiAgICAgaW5rc2NhcGU6ZGVza2NvbG9yPSIjZDFkMWQxIgogICAgIGlua3NjYXBlOmRvY3VtZW50LXVuaXRzPSJtbSIKICAgICBzaG93Z3JpZD0iZmFsc2UiCiAgICAgc2hvd2JvcmRlcj0iZmFsc2UiCiAgICAgYm9yZGVybGF5ZXI9InRydWUiCiAgICAgc2hhcGUtcmVuZGVyaW5nPSJhdXRvIgogICAgIGlua3NjYXBlOnpvb209IjgiCiAgICAgaW5rc2NhcGU6Y3g9Ii00Mi44MTI1IgogICAgIGlua3NjYXBlOmN5PSIzLjEyNSIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTAwOSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0iZzM0NzAiCiAgICAgc2hvd2d1aWRlcz0iZmFsc2UiIC8+CiAgPGRlZnMKICAgICBpZD0iZGVmczIiPgogICAgPGxpbmVhckdyYWRpZW50CiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQyNjUxIgogICAgICAgaW5rc2NhcGU6c3dhdGNoPSJzb2xpZCI+CiAgICAgIDxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDAwMDA7c3RvcC1vcGFjaXR5OjE7IgogICAgICAgICBvZmZzZXQ9IjAiCiAgICAgICAgIGlkPSJzdG9wMjY0OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkNhbWFkYSAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSI+CiAgICA8ZwogICAgICAgaWQ9Imc2MTE3Ij4KICAgICAgPGcKICAgICAgICAgaWQ9ImczNTY2IgogICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjk5NjA1ODExLDAsMCwwLjk5NjA1ODExLDEuNTE3NjU5LDAuMjYzNTQwNTMpIj4KICAgICAgICA8cGF0aAogICAgICAgICAgIGlkPSJyZWN0MzQ4NCIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI1MTU4MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBkPSJNIC0wLjg2NjYxMzc2LDAuMzQ3MjY1NjMgViAzLjg1OTcxMjcgSCAxLjY1OTMzMDIgViAxLjEwMDE5MTIgTCAwLjc1Mzk1OTE0LDAuMzQ3MjY1NjMgWiIgLz4KICAgICAgICA8cGF0aAogICAgICAgICAgIGlkPSJyZWN0MzQzNSIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDowLjI1MTU4MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBkPSJtIDEuMjk0NDMyNSwtMC4xMzg3OTI5OCAwLjg1MTc1NDIsMC44NTcxNDEzIFYgMy4zODIwMTI5IGggLTIuNTE4NTExOTMgdiAtMy41MjA4MDU4OCB6IiAvPgogICAgICAgIDxwYXRoCiAgICAgICAgICAgaWQ9InJlY3QzNDM3IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjIwMzM7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgZD0ibSAxLjI3MTAwOTgsMC4wMDMxNzU1NyAwLjczMzQ1NjMsMC43MzczMzI5IEggMS4yNzEwMDk4IFoiIC8+CiAgICAgIDwvZz4KICAgICAgPGcKICAgICAgICAgaWQ9Imc2MDEyIgogICAgICAgICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9IkNBQ0VMQURPLnN2ZyIKICAgICAgICAgaW5rc2NhcGU6ZXhwb3J0LXhkcGk9IjI1LjQiCiAgICAgICAgIGlua3NjYXBlOmV4cG9ydC15ZHBpPSIyNS40IgogICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMS40NzYzMDIsMi4xMTY2NjY3KSI+CiAgICAgICAgPGcKICAgICAgICAgICBpZD0iZzU5OTgiPgogICAgICAgICAgPGcKICAgICAgICAgICAgIGlkPSJnNTIzNiIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMTM2NTcyNSwwLDAsMS4xMzY1NzI1LDEwLjI2NzYyOCwwLjk0NzY4MDk1KSIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjA7c3Ryb2tlOiM4YTE3MTc7c3Ryb2tlLXdpZHRoOjAuMjMyNzkxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIj4KICAgICAgICAgICAgPGNpcmNsZQogICAgICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eTowO3N0cm9rZTojOGExNzE3O3N0cm9rZS13aWR0aDowLjIzMjc5MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgICAgaWQ9InBhdGgyOTIiCiAgICAgICAgICAgICAgIGN4PSItMTcuMjAwOTQ3IgogICAgICAgICAgICAgICBjeT0iLTAuODM5MDQ5NTIiCiAgICAgICAgICAgICAgIHI9IjEuNDk2NzA5MyIgLz4KICAgICAgICAgICAgPHBhdGgKICAgICAgICAgICAgICAgaWQ9InBhdGgyOTItNSIKICAgICAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MDtzdHJva2U6IzhhMTcxNztzdHJva2Utd2lkdGg6MC4yMzI3OTE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICAgIGQ9Im0gLTE4LjMwNjA5MSwtMS43OTA2MDY0IDEuMTE1MTEzLDAuOTk4MzI4ODUgMS4xMTUxMTQsMC45OTgzMjk0IgogICAgICAgICAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNjYyIgLz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=';
+    private srcImgCopiarLinkExternoCancelado = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTUuOTk5OTk5IgogICBoZWlnaHQ9IjE2IgogICB2aWV3Qm94PSIwIDAgNC4yMzMzMzMgNC4yMzMzMzMyIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTpleHBvcnQtZmlsZW5hbWU9ImNvcGlhcjEuc3ZnIgogICBpbmtzY2FwZTpleHBvcnQteGRwaT0iMjUuNCIKICAgaW5rc2NhcGU6ZXhwb3J0LXlkcGk9IjI1LjQiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNvcGlhckV4dGVybm9DYW5jZWxhZG8uc3ZnIgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMtZGV2ICg1MjVhYmVhZCwgMjAyMi0wNC0xOSkiCiAgIHhtbDpzcGFjZT0icHJlc2VydmUiCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIgogICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHNvZGlwb2RpOm5hbWVkdmlldwogICAgIGlkPSJuYW1lZHZpZXc3IgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSJ0cnVlIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6ZG9jdW1lbnQtdW5pdHM9Im1tIgogICAgIHNob3dncmlkPSJmYWxzZSIKICAgICBzaG93Ym9yZGVyPSJmYWxzZSIKICAgICBib3JkZXJsYXllcj0idHJ1ZSIKICAgICBzaGFwZS1yZW5kZXJpbmc9ImF1dG8iCiAgICAgaW5rc2NhcGU6em9vbT0iMzIiCiAgICAgaW5rc2NhcGU6Y3g9Ii0zLjA3ODEyNSIKICAgICBpbmtzY2FwZTpjeT0iOC43MTg3NSIKICAgICBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjE5MjAiCiAgICAgaW5rc2NhcGU6d2luZG93LWhlaWdodD0iMTAwOSIKICAgICBpbmtzY2FwZTp3aW5kb3cteD0iLTgiCiAgICAgaW5rc2NhcGU6d2luZG93LXk9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0iZzM0NzAiCiAgICAgc2hvd2d1aWRlcz0iZmFsc2UiIC8+PGRlZnMKICAgICBpZD0iZGVmczIiPjxsaW5lYXJHcmFkaWVudAogICAgICAgaWQ9ImxpbmVhckdyYWRpZW50MjY1MSIKICAgICAgIGlua3NjYXBlOnN3YXRjaD0ic29saWQiPjxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiMwMDAwMDA7c3RvcC1vcGFjaXR5OjE7IgogICAgICAgICBvZmZzZXQ9IjAiCiAgICAgICAgIGlkPSJzdG9wMjY0OSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZwogICAgIGlua3NjYXBlOmxhYmVsPSJDYW1hZGEgMSIKICAgICBpbmtzY2FwZTpncm91cG1vZGU9ImxheWVyIgogICAgIGlkPSJsYXllcjEiPjxnCiAgICAgICBpZD0iZzM0NzAiPjxnCiAgICAgICAgIGlkPSJnMzU2NiIKICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMC45OTYwNTgxMSwwLDAsMC45OTYwNTgxMSwxLjUxNzY1OSwwLjI2MzU0MDUzKSIKICAgICAgICAgc3R5bGU9ImZpbGw6I2UzZTJkYjtmaWxsLW9wYWNpdHk6MSIKICAgICAgICAgaW5rc2NhcGU6ZXhwb3J0LWZpbGVuYW1lPSIuXGNvcGlhcjEuc3ZnIgogICAgICAgICBpbmtzY2FwZTpleHBvcnQteGRwaT0iMjUuNCIKICAgICAgICAgaW5rc2NhcGU6ZXhwb3J0LXlkcGk9IjI1LjQiPjxwYXRoCiAgICAgICAgICAgaWQ9InJlY3QzNDg0IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNlM2UyZGI7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjUxNTgxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICAgIGQ9Ik0gLTAuODY2NjEzNzYsMC4zNDcyNjU2MyBWIDMuODU5NzEyNyBIIDEuNjU5MzMwMiBWIDEuMTAwMTkxMiBMIDAuNzUzOTU5MTQsMC4zNDcyNjU2MyBaIiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InJlY3QzNDM1IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNlM2UyZGI7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMjUxNTgxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIgogICAgICAgICAgIGQ9Im0gMS4yOTQ0MzI1LC0wLjEzODc5Mjk4IDAuODUxNzU0MiwwLjg1NzE0MTMgViAzLjM4MjAxMjkgaCAtMi41MTg1MTE5MyB2IC0zLjUyMDgwNTg4IHoiIC8+PHBhdGgKICAgICAgICAgICBpZD0icmVjdDM0MzciCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2UzZTJkYjtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yMjAzMztzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBkPSJtIDEuMjcxMDA5OCwwLjAwMzE3NTU3IDAuNzMzNDU2MywwLjczNzMzMjkgSCAxLjI3MTAwOTggWiIgLz48L2c+PHRleHQKICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICAgICAgICAgc3R5bGU9ImZvbnQtc2l6ZToyLjcyODlweDtmaWxsOiMwMDAwMDA7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjAuMjI3NDA5O3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgIHg9IjEuMjc3NTc1OSIKICAgICAgICAgeT0iMy4yNDAyMDg0IgogICAgICAgICBpZD0idGV4dDM5OCI+PHRzcGFuCiAgICAgICAgICAgc29kaXBvZGk6cm9sZT0ibGluZSIKICAgICAgICAgICBpZD0idHNwYW4zOTYiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzVhMTcxNztzdHJva2Utd2lkdGg6MC4yMjc0MDk7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICB4PSIxLjI3NzU3NTkiCiAgICAgICAgICAgeT0iMy4yNDAyMDg0Ij5FPC90c3Bhbj48L3RleHQ+PGcKICAgICAgICAgaWQ9Imc1MjM2IgogICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLjEzNjU3MjUsMCwwLDEuMTM2NTcyNSwyMS42OTU3MjksMy4wNDU1MDI1KSIKICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MDtzdHJva2U6IzhhMTcxNztzdHJva2Utd2lkdGg6MC4yMzI3OTE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiPjxjaXJjbGUKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eTowO3N0cm9rZTojOGExNzE3O3N0cm9rZS13aWR0aDowLjIzMjc5MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBpZD0icGF0aDI5MiIKICAgICAgICAgICBjeD0iLTE3LjIwMDk0NyIKICAgICAgICAgICBjeT0iLTAuODM5MDQ5NTIiCiAgICAgICAgICAgcj0iMS40OTY3MDkzIiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgyOTItNSIKICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eTowO3N0cm9rZTojOGExNzE3O3N0cm9rZS13aWR0aDowLjIzMjc5MTtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICBkPSJtIC0xOC4zMDYwOTEsLTEuNzkwNjA2NCAxLjExNTExMywwLjk5ODMyODg1IDEuMTE1MTE0LDAuOTk4MzI5NCIKICAgICAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNjYyIgLz48L2c+PC9nPjwvZz48L3N2Zz4K';
+    private srcImgAlterarnivelAcessoCancelado = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMTYiCiAgIGhlaWdodD0iMTYiCiAgIHZpZXdCb3g9IjAgMCA0LjIzMzMzMjggNC4yMzMzMzI4IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMtZGV2ICg1MjVhYmVhZCwgMjAyMi0wNC0xOSkiCiAgIHNvZGlwb2RpOmRvY25hbWU9ImNoYXZlQ2FuY2VsYWRvLnN2ZyIKICAgaW5rc2NhcGU6ZXhwb3J0LWZpbGVuYW1lPSJjaGF2ZS5zdmciCiAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSI5NiIKICAgaW5rc2NhcGU6ZXhwb3J0LXlkcGk9Ijk2IgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzciCiAgICAgcGFnZWNvbG9yPSIjZmZmZmZmIgogICAgIGJvcmRlcmNvbG9yPSIjMDAwMDAwIgogICAgIGJvcmRlcm9wYWNpdHk9IjAuMjUiCiAgICAgaW5rc2NhcGU6c2hvd3BhZ2VzaGFkb3c9IjIiCiAgICAgaW5rc2NhcGU6cGFnZW9wYWNpdHk9IjAuMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjMyLjAwMDAwMSIKICAgICBpbmtzY2FwZTpjeD0iLTAuMDE1NjI1IgogICAgIGlua3NjYXBlOmN5PSI3Ljg0Mzc0OTgiCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxOTIwIgogICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEwMDkiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImxheWVyMSIgLz48ZGVmcwogICAgIGlkPSJkZWZzMiI+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ5OTAiPjxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiNhOTgyNWE7c3RvcC1vcGFjaXR5OjE7IgogICAgICAgICBvZmZzZXQ9IjAiCiAgICAgICAgIGlkPSJzdG9wOTg2IiAvPjxzdG9wCiAgICAgICAgIHN0eWxlPSJzdG9wLWNvbG9yOiMyODIyMGI7c3RvcC1vcGFjaXR5OjA7IgogICAgICAgICBvZmZzZXQ9IjEiCiAgICAgICAgIGlkPSJzdG9wOTg4IiAvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50CiAgICAgICBpbmtzY2FwZTpjb2xsZWN0PSJhbHdheXMiCiAgICAgICB4bGluazpocmVmPSIjbGluZWFyR3JhZGllbnQ5OTAiCiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQ5OTIiCiAgICAgICB4MT0iMi4xODAzNzAyIgogICAgICAgeTE9IjIuNTcwMDExOSIKICAgICAgIHgyPSIyLjQ0NjYxNjciCiAgICAgICB5Mj0iMi41NzAwMTE5IgogICAgICAgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiCiAgICAgICBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuODcwMTcxNSwxLjQ4Mzg5ODQsMC40ODk1NDMxMywtMC42MTY5NzU5NiwyLjk1NzE4NTYsLTIuMTU5NTgxNikiIC8+PGxpbmVhckdyYWRpZW50CiAgICAgICBpZD0ibGluZWFyR3JhZGllbnQyNjUxIgogICAgICAgaW5rc2NhcGU6c3dhdGNoPSJzb2xpZCI+PHN0b3AKICAgICAgICAgc3R5bGU9InN0b3AtY29sb3I6IzAwMDAwMDtzdG9wLW9wYWNpdHk6MTsiCiAgICAgICAgIG9mZnNldD0iMCIKICAgICAgICAgaWQ9InN0b3AyNjQ5IiAvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkNhbWFkYSAxIgogICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiCiAgICAgaWQ9ImxheWVyMSI+PGcKICAgICAgIGlkPSJnNDI0IgogICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMS44ODMyMzU3LDAsMCwwLjYyMTI4NTg4LC0xLjg0MzAyODcsMC43Mzc4MDQ3NykiCiAgICAgICBzdHlsZT0iZmlsbDojZmZkZDU1IiAvPjxwYXRoCiAgICAgICBpZD0icmVjdDI1MDIiCiAgICAgICBzdHlsZT0iZmlsbDp1cmwoI2xpbmVhckdyYWRpZW50OTkyKTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6IzVhMTcxNztzdHJva2Utd2lkdGg6MCIKICAgICAgIGQ9Ik0gOC44NDMyMDQyLC0xLjU3OTMyMiA3LjM2ODU4NzIsMC4yNzkxNTIwNiA4LjA1MzYwMjQsMC44MTQ1NDc1NiA4LjU3MTgwNzgsMC4xNTUxODc2NiA4LjE2NTY1NDgsLTAuMzI1MzkgOC43NDIyMTA5LC0wLjEzODU3MjU0IDguNjg1MDE2OSwtMC41MDAyOTcxIDkuMDA3MzgxMywtMC40ODkyNjg3IDkuMTk1ODg0NiwtMC41MDM0ODE4IGMgMC4wNjMyMjUsLTAuMDEzNjMxIDAuMDYwOTY1LC0wLjI2NjE2MzM3IDAuMDE3MjAyLC0wLjIzOTY3MzYyIGwgMC4wOTE1NDksLTAuMDY1MjUyNSAwLjA0ODQzNiwtMC4xNjM1NDk2IC0wLjEwOTE1OTgsLTAuMTk4NTk4OTggLTAuMDkwMzM2LC0wLjEzMjUyMjIgLTAuMDc1NTA5LC0wLjA5ODAyNSB6IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjY2NjY2NjY2NjY2NjY2NjIiAvPjxnCiAgICAgICBpZD0iZzY5MjEiCiAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLjAzODMwMywwLDAsMS4wMzgzMDMsLTAuMTU1NzA4MDksLTAuMDM2MjA0MTEpIj48cGF0aAogICAgICAgICBpZD0icmVjdDI0MDMiCiAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmRkNTU7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjAuMDIzMzQzOSIKICAgICAgICAgZD0iTSAyLjg4MzM2MTIsMC4wODkwMTAyOCAxLjY0NTM2OTMsMS42NTI0Mjg4IGMgLTAuMDYzMDUyLDAuMDc5NjI2IDAuMDQ5NiwwLjI3MzM4OTkgMC4yNTI3NTY2LDAuNDM0NTg1NCBMIDIuMzkxMjkwNiwyLjQ3ODMxODcgQyAyLjU5NDQ0NzksMi42Mzk1MTUgMi44MDg4MjQ0LDIuNzA1MjMzOSAyLjg3MTk1NDcsMi42MjU2NzAxIEwgMy4xNTAwMDg5LDIuMTY5NjI5MiBjIDAsMCAtMC4xMDA4MDQ1LC0wLjQxNzIwNTQgLTAuMjA4NjMyNywtMC44NDgwMDQ3IDAuMjY2MzQ5LDAuMDQ4NjE1IDAuMjU4ODc5OSwwLjA0NjUyNSAwLjY3MTI5OSwwLjEyODY1NjMgQyAzLjQ4MjQ4OTMsMS4xMTY0NTc5IDMuNDgzMDMxOCwxLjExMjcyMDYgMy4zODA3ODI1LDAuNzk1NTk0NjQgMy42NzEyOTcsMC44NDAyMjU4OCAzLjY3MTk1ODUsMC44MzkzNTE2IDMuOTcxOTE2NCwwLjg4Mzc0NDMxIDQuMDMzMDAzNCwwLjc5MzgwODU2IDQuMDMxOTE3NCwwLjc4NzgxOTkyIDQuMDk2MjQzMywwLjY4NzQxNTg0IDQuMDg5NDcxNywwLjY0NTQwNzg2IDQuMDE4OTAxNSwwLjUyMDA4NDA5IDMuOTA1MjA2NSwwLjM0ODQ3MDg4IDMuODI4Njg5NSwwLjIzMjk3NDcxIDMuODcwODY0OCwwLjI5NzAzNTM4IDMuNzA1ODI3LDAuMDQ2ODQ3MTYgMy4zNDUyNjEsMC4wNjQyMjcyOSAzLjIyNzMxNDEsMC4wNzI1OTE3MiAyLjg4MzM2MTIsMC4wODkwMTAyOCBaIgogICAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNzc3NzY2NjY2Njc2NjIiAvPjxnCiAgICAgICAgIGlkPSJnNjkxMyIKICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMC44ODE2OTc0MiwwLDAsMC44ODE2OTc0MiwwLjEyNzU4NTIxLDAuNDQyNzIzNzgpIj48ZwogICAgICAgICAgIGlkPSJnNjkwNyI+PHJlY3QKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOiM4MDgwODA7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjAuMDIyMzM0MiIKICAgICAgICAgICAgIGlkPSJyZWN0MTg0IgogICAgICAgICAgICAgd2lkdGg9IjIuMjEyMTE3MiIKICAgICAgICAgICAgIGhlaWdodD0iMi45MTM1MDc5IgogICAgICAgICAgICAgeD0iLTAuMjYzNzEzMjciCiAgICAgICAgICAgICB5PSIxLjU2OTcyNTIiCiAgICAgICAgICAgICByeT0iMC40MDE4NjMyNSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KC0wLjYyMTU2NDEyLDAuNzgzMzYzMjksMC43ODMzNjMyOSwwLjYyMTU2NDEyLDAsMCkiIC8+PHJlY3QKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmQ0MmE7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgICAgICAgaWQ9InJlY3QxODQtMyIKICAgICAgICAgICAgIHdpZHRoPSIyLjAwNzY2NjEiCiAgICAgICAgICAgICBoZWlnaHQ9IjIuNjQ0MjMyMyIKICAgICAgICAgICAgIHg9Ii0wLjE2NTQ1OTM1IgogICAgICAgICAgICAgeT0iMS43MDAyNTE5IgogICAgICAgICAgICAgcnk9IjAuMzY0NzIxNzIiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgtMC42MjE1NjQxMiwwLjc4MzM2MzI5LDAuNzgzMzYzMjksMC42MjE1NjQxMiwwLDApIiAvPjwvZz48ZWxsaXBzZQogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7c3Ryb2tlOiM1YTE3MTc7c3Ryb2tlLXdpZHRoOjA7c3Ryb2tlLWRhc2hhcnJheTpub25lIgogICAgICAgICAgIGlkPSJwYXRoMjczMCIKICAgICAgICAgICBjeD0iMS4zMTIzMjA4IgogICAgICAgICAgIGN5PSIyLjk3OTQ0MDIiCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoLTAuNjIxNTY0MTIsMC43ODMzNjMyOSwwLjc4MzM2MzI5LDAuNjIxNTY0MTIsMCwwKSIKICAgICAgICAgICByeD0iMC4xNDc2NjAxNyIKICAgICAgICAgICByeT0iMS4wMzc3MTE5IiAvPjwvZz48L2c+PGcKICAgICAgIGlkPSJnNTIzNiIKICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMTM2NTcyNSwwLDAsMS4xMzY1NzI1LDIxLjY5NTcyOSwzLjA5NTExMTkpIgogICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MDtzdHJva2U6IzhhMTcxNztzdHJva2Utd2lkdGg6MC4yMzI3OTE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiPjxjaXJjbGUKICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MDtzdHJva2U6IzhhMTcxNztzdHJva2Utd2lkdGg6MC4yMzI3OTE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgIGlkPSJwYXRoMjkyIgogICAgICAgICBjeD0iLTE3LjIwMDk0NyIKICAgICAgICAgY3k9Ii0wLjgzOTA0OTUyIgogICAgICAgICByPSIxLjQ5NjcwOTMiIC8+PHBhdGgKICAgICAgICAgaWQ9InBhdGgyOTItNSIKICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MDtzdHJva2U6IzhhMTcxNztzdHJva2Utd2lkdGg6MC4yMzI3OTE7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgIGQ9Im0gLTE4LjMwNjA5MSwtMS43OTA2MDY0IDEuMTE1MTEzLDAuOTk4MzI4ODUgMS4xMTUxMTQsMC45OTgzMjk0IgogICAgICAgICBzb2RpcG9kaTpub2RldHlwZXM9ImNjYyIgLz48L2c+PC9nPjwvc3ZnPgo=';
+
+    private pastasSEI: PastaSEI[];
+
+    private copyBox = {
+        get: async () => {
+            let boxOfLinks = (await this.waitLoadDocument()).getElementById("copiarlinksclicados");
+            if (!boxOfLinks) {
+                boxOfLinks = this.document.createElement('div');
+                boxOfLinks.style.display = 'none';
+                boxOfLinks.id = 'copiarlinksclicados';
+                this.document.body.append(boxOfLinks);
+            }
+            return boxOfLinks;
+        },
+        clean: async () => {
+            AnexosTools.clearInnerHTML(await this.copyBox.get());
+        },
+        addNode: async (html: string) => {
+            let box = await this.copyBox.get();
+            box.innerHTML = box.innerHTML + html;
+        },
+        copy: async () => {
+            let box = await this.copyBox.get();
+            box.style.display = 'block';
+            const sel = this.window.getSelection();
+            sel.removeAllRanges();
+            sel.selectAllChildren(box);
+            try {
+                this.window.document.execCommand('copy');
+                sel.removeAllRanges();
+            }
+            catch (err) {
+                alert('Ctrl + C para copiar.');
+            }
+            box.style.display = 'none';
+        }
+    };
+
+    processoAbertoNasUnidades: string[];
+    processoAbertoNaUnidade: boolean = false;
+
+    private links: Link[] = [];
+
+    constructor(procedimentoTrabalhar: ProcedimentoTrabalhar) {
+        super(procedimentoTrabalhar);
+        this.className = 'ProcedimentoVisualizar';
+        this.pastasSEI = [];
+    }
+    private abrirPastas() {
+        return new Promise<boolean>(async (resolve, reject) => {
+            await this.waitLoadElements('#divArvore>div');
+            let imgs = this.querySelectorAll("[src$='/infra_js/arvore/plus.gif']");
+            for (let img of imgs) {
+                img.parentElement.click();
+                await this.waitLoadElements('#' + img.id.replace('joinPASTA', 'divPASTA') + '>a[target="ifrVisualizacao"]');
+            }
+            this.checarDocumentos();
+            this.processarBtns(this.processoAbertoNaUnidade);
+            resolve(true);
+        });
+    }
+    /**
+     * 
+     * @param anexos 
+     * @returns true selecionou todos os anexos
+     */
+    async selecionar(anexos: Anexos) {
+        await this.waitLoadWindow();
+        await this.abrirPastas();
+        let selectCount = 0;
+        for (let pasta of this.pastasSEI) {
+            for (let item of pasta.documentos) {
+                item.checkBox.checked = false;
+            }
+        }
+        // for (let anexo of anexos)
+        // console.log(anexo.tipo + ' ' + anexo.nomeReduzido);
+        for (let pasta of this.pastasSEI)
+            for (let docSEI of pasta.documentos) {
+                for (let anexo of anexos) {
+                    if (docSEI.nomeCompleto.match(anexo.nomeAnexo + ' ' + anexo.numeroAnexo)) {
+                        Object.assign(docSEI, anexo);
+                        docSEI.checkBox.checked = true;
+                        selectCount++;
+                    }
+                }
+            }
+        this.marcarTodosClicados();
+        if (anexos.filter((a) => { return a.inserirAnexo && a.inserirAnexo === true }).length == selectCount) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private fecharPastas() {
+        let pastas = this.querySelectorAll('[src$="/infra_js/arvore/minusbottom.gif"]');
+        for (let pasta of pastas)
+            pasta.click();
+    }
+    private clickIncluirDocumento() {
+        this.querySelector('a[href^="controlador.php?acao=arvore_visualizar"]').click();
+    }
+    private getDocumentData(numeroDocumento: string) {
+        return new Promise<DocSEI>(async (resolve, reject) => {
+            let dados = await this.getDocSEI(numeroDocumento);
+            resolve(dados);
+        });
+    }
+    getDocSEI(numeroDocumento: string, abrirPastas?: boolean) {
+        return new Promise<DocSEI>(async (resolve, reject) => {
+            let f = async (timeOut: number) => {
+                if (abrirPastas)
+                    await this.abrirPastas();
+                for (let pasta of this.pastasSEI) {
+                    for (let doc of pasta.documentos) {
+                        if (doc.numeroInternoDoDocumento == numeroDocumento) {
+                            resolve(doc);
+                            return;
+                        }
+                    }
+                }
+                setTimeout(f, timeOut - 100);
+            }
+            f(10000)
+        });
+    }
+
+    getDocSEIs() {
+        let arr = this.pastasSEI.reduce((acumulador: DocSEI[], valorAtual: PastaSEI) => {
+            return acumulador.concat(valorAtual.documentos);
+        }, <DocSEI[]>[]);
+        return arr;
+    }
+    getLinkProcessoRelacionado(processos: string | RegExp | string[] | RegExp[]) {
+        // await this.waitLoadElement('#divRelacionados');
+        let anchors = this.querySelectorAll('#divRelacionadosParciais>a');
+        let divs = this.querySelectorAll('#divRelacionadosParciais>div');
+        let linkSei: string;
+        let gerarLnkSei = (processo: string | RegExp) => {
+            for (let i = 0; i < anchors.length; i++) {
+                if (typeof processo === 'string' && anchors[i].innerText.trim().startsWith(processo.trim()) || typeof processo !== 'string' && anchors[i].innerText.match(processo)) {
+                    let link = <HTMLAnchorElement>divs[i].querySelector('a');
+                    let numeroSEI = link.innerText;
+                    let numeroInternoDocumento = /id_procedimento=([0-9]+)/i.exec(link.href)[1];
+                    linkSei = AnexosTools.createLinkHtmlDoc(numeroInternoDocumento, numeroSEI, '', false, '');
+                    break;
+                }
+            }
+        };
+
+        if (!Array.isArray(processos)) {
+            processos = [<string>processos];
+        }
+        for (let processo of processos) {
+            gerarLnkSei(processo);
+            if (linkSei) {
+                break;
+            }
+        }
+        return linkSei;
+    }
+    private setDocumentData(numeroDocumento: string, dados: DadosEquiplanoPDF) {
+        for (let pasta of this.pastasSEI) {
+            for (let doc of pasta.documentos) {
+                if (doc.numeroInternoDoDocumento == numeroDocumento) {
+                    Object.assign(doc, dados);
+                    break;
+                }
+            }
+        }
+    }
+
+    private async imageEventClick(e: Event, text: string) {
+        e.preventDefault();
+        await this.copyBox.clean();
+        await this.copyBox.addNode(text);
+        await this.copyBox.copy();
+    }
+
+
+    async getListClicados(filtrarNomes?: string[]) {
+        await this.waitLoadWindow();
+        let documentos: DocSEI[] = [];
+        if (this.pastasSEI.length > 0) {
+            this.pastasSEI.sort(function (a, b) {
+                return a.pastaID.toString().localeCompare(b.pastaID.toString());
+            });
+        }
+        let filtrar = (nomeDocumento: string) => {
+            if (filtrarNomes) {
+                if (filtrarNomes.length > 0) {
+                    for (let s1 of filtrarNomes) {
+                        if (nomeDocumento.match(s1)) {
+                            return true;
+                        }
+                    }
+                }
+                else {
+                    return true;
+                }
+            }
+            else {
+                return true;
+            }
+            return false;
+        };
+        for (let pasta of this.pastasSEI)
+            for (let item of pasta.documentos) {
+                if (item.checkBox.checked && filtrar(item.nomeCompleto)) {
+                    documentos.push(item);
+                }
+            }
+        return documentos;
+    }
+    private async copiarTodosClicados(key: keyof ListaEntidades) {
+        let gerarEntidadesTexto = new GerarEntidadesTexto();
+        let lista = gerarEntidadesTexto.gerarEntities(this.procedimentoTrabalhar, await this.getListClicados());
+        this.copyBox.clean();
+        this.copyBox.addNode(lista[key].toString());
+        this.copyBox.copy();
+    }
+    private getOrCreateImgCopiarNomeComLink(docSEI: DocSEI) {
+        let imgCopiar = <HTMLImageElement>document.getElementById("img_id_" + docSEI.numeroInternoDoDocumento);
+        if (!imgCopiar) {
+            imgCopiar = document.createElement('img');
+            imgCopiar.id = "img_id_" + docSEI.numeroInternoDoDocumento;
+            imgCopiar.src = this.srcImgCopiarLinkInterno;
+            imgCopiar.title = "Copiar nome do documento com link interno";
+            imgCopiar.onclick = (evt) => {
+                this.imageEventClick(evt, docSEI.copyLinkFull);
+                this.createDivAlertCopy("Link interno com sucesso.", imgCopiar);
+            };
+        }
+        return imgCopiar;
+    }
+
+    private getOrCreateImgCopiarLinkExterno(docSEI: DocSEI) {
+        let imgCopiar = <HTMLImageElement>document.getElementById("img_id_externo_" + docSEI.numeroInternoDoDocumento);
+        if (!imgCopiar) {
+            imgCopiar = document.createElement('img');
+            imgCopiar.id = "img_id_externo_" + docSEI.numeroInternoDoDocumento;
+            if (docSEI.estaCancelado || docSEI.eFormulario && !docSEI.assinado || docSEI.docNivelAcesso !== 'público') {
+                if (docSEI.estaCancelado)
+                    imgCopiar.title = "O documento está cancelado";
+                else if (docSEI.eFormulario && !docSEI.assinado)
+                    imgCopiar.title = "O documento não foi assinado";
+                else if (docSEI.docNivelAcesso !== 'público')
+                    imgCopiar.title = "O nivel de acesso do documento não é público";
+                imgCopiar.src = this.srcImgCopiarLinkExternoCancelado;
+
+            } else {
+
+                imgCopiar.src = this.srcImgCopiarLinkExterno;
+                imgCopiar.title = "Copiar link externo/público";
+                imgCopiar.onclick = async (evt) => {
+                    let iconeRestrito = this.document.getElementById('iconNA' + docSEI.numeroInternoDoDocumento);
+                    if (iconeRestrito) {
+                        alert('Não é possível copiar o link externo devido estar restrito: ' + iconeRestrito.title);
+                    } else {
+                        if (!docSEI.linkExterno) {
+                            await this.procedimentoTrabalhar.carregarLinkExterno(this.getDocSEIs());
+                        }
+
+                        if (docSEI.linkExterno && docSEI.linkExterno.length > 0) {
+                            await this.imageEventClick(evt, docSEI.linkExterno);
+                            this.createDivAlertCopy("Link externo copiado com sucesso.", imgCopiar);
+                        } else {
+                            alert('Não foi possível encontrar o link externo, caso seja um formulário é preciso que ele esteja assinado');
+                        }
+                    }
+                };
+            }
+
+
+        }
+        return imgCopiar;
+    }
+
+
+    private getOrCreateImgAlterarnivelAcesso(docSEI: DocSEI) {
+
+        let imgCopiar = <HTMLImageElement>document.getElementById("img_nivel_acesso_" + docSEI.numeroInternoDoDocumento);
+        if (!imgCopiar) {
+            imgCopiar = document.createElement('img');
+            imgCopiar.id = "img_nivel_acesso_" + docSEI.numeroInternoDoDocumento;
+            if (docSEI.estaCancelado) {
+                imgCopiar.src = this.srcImgAlterarnivelAcessoCancelado;
+                imgCopiar.title = "Não é possível alterar o nivel de acesso do documento";
+            } else {
+                imgCopiar.src = this.srcImgAlterarnivelAcesso;
+                imgCopiar.title = "Alterar o nivel de acesso do documento";
+                imgCopiar.onclick = async (evt) => {
+                    this.procedimentoTrabalhar.documentoAlterar.alterarNivelDeAcesso(docSEI);
+                    evt.preventDefault();
+                };
+            }
+
+
+        }
+        return imgCopiar;
+    }
+
+    private createDivAlertCopy(msg: string, img: HTMLElement) {
+        let div = document.createElement('div');
+        let span = document.createElement('span');
+        div.className = 'msgGeral msgSucesso';
+        span.innerText = msg;
+        div.append(span);
+        div.style.display = 'none';
+        img.insertAdjacentElement('afterend', div);
+        div.style.position = "absolute";
+        div.style.left = (img.offsetLeft + 36) + 'px';
+        div.style.top = (img.offsetTop) + 'px';
+        div.style.height = '7px';
+        span.style.verticalAlign = 'middle';
+        let d = $(div).fadeIn(300).delay(1500).fadeOut(500);
+        setTimeout(() => d.remove(), 2300);
+    }
+    private marcarTodosClicados() {
+        for (let pasta of this.pastasSEI)
+            for (let item of pasta.documentos) {
+                if (item.span.className.match('infraArvoreNoVisitado')) {
+                    continue;
+                }
+                if (item.checkBox.checked) {
+                    if (item.span.classList) {
+                        if (!item.span.classList.contains('infraArvoreNoSelecionado'))
+                            item.span.classList.add('infraArvoreNoSelecionado');
+                    } else {
+                        item.span.classList.add('infraArvoreNoSelecionado')
+                    }
+                } else {
+                    if (item.span.classList.contains('infraArvoreNoSelecionado')) {
+                        item.span.classList.remove('infraArvoreNoSelecionado')
+                    }
+                }
+            }
+    }
+
+    private async loadLinkAnexo(_docSEI: DocSEI, somenteLink: boolean) {
+        let request = await AnexosTools.getRequest(_docSEI.linkAlterarDocumento, 'GET', 'document');
+        let doc: Document = request.response;
+        let hdnAnexos = <HTMLInputElement>doc.getElementById('hdnAnexos');
+        if (hdnAnexos) {
+            let arr = hdnAnexos.value.split('±');
+            _docSEI.fileName = arr[1];
+            _docSEI.idAnexo = arr[0];
+            _docSEI.linkAnexo = (await this.getLink('documento_download_anexo', _docSEI.idAnexo, 'idAnexo')).link;
+            if (!somenteLink) {
+                let anexo = await new ExtrairDados().extrairDadosDoArquivoOuTexto(_docSEI.linkAnexo, _docSEI.fileName);
+                Object.assign(_docSEI, anexo);
+            }
+
+        }
+    }
+
+    private getOrCreateCheckBox(numeroDocumento: string) {
+        let check = <HTMLInputElement>this.procedimentoTrabalhar.document.getElementById("checkbox_id_" + numeroDocumento);
+        if (!check) {
+            check = this.document.createElement("input");
+            check.type = "checkbox";
+            check.id = "checkbox_id_" + numeroDocumento;
+        }
+        return check;
+    }
+    private getItem(numeroDocumento: string) {
+        for (let pasta of this.pastasSEI)
+            for (let item of pasta.documentos) {
+                if (item.numeroInternoDoDocumento == numeroDocumento) {
+                    return item;
+                }
+            }
+        return null;
+    }
+    private getOrCreatePasta(pastaID: number) {
+        let pastaSEI: PastaSEI = null;
+        for (let pasta of this.pastasSEI) {
+            if (pasta.pastaID == pastaID) {
+                pastaSEI = pasta;
+                break;
+            }
+        }
+        if (pastaSEI == null) {
+            pastaSEI = { pastaID: pastaID, documentos: [] };
+            this.pastasSEI.push(pastaSEI);
+        }
+        return pastaSEI;
+    }
+
+
+    private getNomesDocumentosExistentes() {
+        return new Promise<string[]>((resolve, reject) => {
+            let _documentosExistentes = AnexosTools.getCfg().anexosExistentes.concat(AnexosTools.getCfg().formulariosExistentes).sort(AnexosTools.SORT_LENGTH_MAIOR_PARA_MENOR);
+            let f = () => {
+                if (_documentosExistentes.length === 0) {
+                    setTimeout(f, 100);
+                } else {
+                    resolve(_documentosExistentes)
+                }
+            }
+            f();
+        })
+    }
+
+    private getOrCreateData(pastaID: number, numeroInternoDoDocumento: string, numeroDePesquisaSei: string, nomeCompleto: string, span: HTMLSpanElement) {
+        let _docSEI = this.getItem(numeroInternoDoDocumento);
+        if (!_docSEI) {
+            let copyLinkFull = AnexosTools.createLinkHtmlDoc(numeroInternoDoDocumento, numeroDePesquisaSei, nomeCompleto, true, '');
+            let copyLinkNumber = AnexosTools.createLinkHtmlDoc(numeroInternoDoDocumento, numeroDePesquisaSei, nomeCompleto, false, '');
+
+            let extrairDados = new ExtrairDados();
+            let _dadosIniciais = extrairDados.extrairDadosPeloTexto(nomeCompleto);
+            let pastaSEI = this.getOrCreatePasta(pastaID);
+
+            let numeroAnexo = nomeCompleto.replace(new RegExp('^' + _dadosIniciais.nomeAnexo + '[ ]*'), '');
+            if (numeroAnexo === nomeCompleto) {
+                numeroAnexo = _dadosIniciais.numeroAnexo
+            }
+            //numeroAnexo: _dadosIniciais.numeroAnexo,
+            _docSEI = {
+                ...extrairDados.defaultAnexo(),
+                nomeAnexo: _dadosIniciais.nomeAnexo,
+                numeroAnexo: numeroAnexo,
+                nomeCompleto: nomeCompleto,
+                nomeCompletoSpan: nomeCompleto,
+                numeroInternoDoDocumento: numeroInternoDoDocumento,
+                checkBox: null,
+                copyLinkFull: copyLinkFull,
+                LINK: copyLinkNumber,
+                LINK_EXTERNO: '',
+                imgCopiar: null,
+                numeroDePesquisaSei: numeroDePesquisaSei,
+                span: span,
+                linkView: (<HTMLAnchorElement>this.document.getElementById('anchor' + numeroInternoDoDocumento)).href || '',
+                linkAlterarDocumento: '',
+                linkAnexo: '',
+                assinado: !!this.document.getElementById('iconA' + numeroInternoDoDocumento),
+                docNivelAcesso: !!this.document.getElementById('iconNA' + numeroInternoDoDocumento) ? 'restrito' : 'público',
+                eFormulario: !!this.document.getElementById('icon' + numeroInternoDoDocumento).outerHTML.match('sei_documento_interno.gif'),
+                estaCancelado: !!this.document.getElementById('icon' + numeroInternoDoDocumento).outerHTML.match('protocolo_cancelado.gif'),
+            }
+
+            // _docSEI = Object.assign(extrairDados.defaultAnexo(), tempDoc);
+            let checkBox = this.getOrCreateCheckBox(numeroInternoDoDocumento);
+            _docSEI.checkBox = checkBox;
+            let imgCopiar = this.getOrCreateImgCopiarNomeComLink(_docSEI);
+            _docSEI.imgCopiar = imgCopiar;
+            let imgCopiarLinkExterno = this.getOrCreateImgCopiarLinkExterno(_docSEI);
+            let imgAlterarnivelAcesso = this.getOrCreateImgAlterarnivelAcesso(_docSEI);
+            let spanParent = <HTMLSpanElement>span.parentNode;
+            spanParent.before(imgCopiar);
+            if (imgCopiarLinkExterno && AnexosTools.getCfg().copiar_link_externo) spanParent.before(imgCopiarLinkExterno);
+            if (imgAlterarnivelAcesso && AnexosTools.getCfg().alterar_acesso_documento) spanParent.before(imgAlterarnivelAcesso);
+            spanParent.before(checkBox);
+
+            imgCopiar.hidden = AnexosTools.getCfg().mostrar_copy ? !(AnexosTools.getCfg().sempre_mostrar_check_copy) : true;
+            checkBox.hidden = !(AnexosTools.getCfg().sempre_mostrar_check_copy);
+
+            spanParent.parentElement.addEventListener('mouseover', () => {
+                imgCopiar.hidden = !(AnexosTools.getCfg().mostrar_copy);
+                checkBox.hidden = false;
+
+            })
+            spanParent.parentElement.addEventListener('mouseout', () => {
+                imgCopiar.hidden = AnexosTools.getCfg().mostrar_copy ? !(AnexosTools.getCfg().sempre_mostrar_check_copy) : true;
+                checkBox.hidden = !(AnexosTools.getCfg().sempre_mostrar_check_copy);
+                if (checkBox.checked) checkBox.hidden = false;
+            })
+
+
+            this.getLink(['documento_alterar_recebido', 'documento_alterar'], numeroInternoDoDocumento, 'idDocumento').then((link) => {
+                _docSEI.linkAlterarDocumento = link.link;
+            })
+
+            let _f_check = async () => {
+                let span = <HTMLSpanElement>this.querySelector('#span' + numeroInternoDoDocumento);
+                for (let coordenada of AnexosTools.getCfg().coordenadasPdf) {
+                    if (span.title.match(new RegExp('^' + coordenada.nomeAnexo, 'i'))) {
+                        if (_docSEI.linkAnexo.length === 0 || _docSEI.dadosIniciais) {
+                            await this.loadLinkAnexo(_docSEI, false);
+                        }
+
+                        break;
+                    }
+                }
+                this.marcarTodosClicados();
+                this.processarBtns(this.processoAbertoNaUnidade);
+
+            }
+            checkBox.addEventListener('change', _f_check);
+            pastaSEI.documentos.push(_docSEI);
+
+
+            let ico = (<HTMLImageElement>this.document.getElementById('icon' + numeroInternoDoDocumento));
+            if (!ico.src.match(/sei_documento_interno\.gif/))
+                imgCopiar.addEventListener('dblclick', async (evt) => {
+                    if (_docSEI.linkAnexo.length === 0) await this.loadLinkAnexo(_docSEI, true);
+                    let e = new ExtrairDados();
+                    AnexosTools.download(_docSEI.nomeCompleto.replace(/[\\|<>*:“? ]/g, '_') + ".txt", await e.readFileAsText(_docSEI.linkAnexo, _docSEI.fileName));
+                })
+        }
+        if (_docSEI.dadosIniciais && _docSEI.numeroAnexo === _docSEI.nomeCompletoSpan && AnexosTools.getCfg().anexosExistentes.length > 0) {
+            let extrairDados = new ExtrairDados();
+            let _dadosIniciais = extrairDados.extrairDadosPeloTexto(nomeCompleto);
+            let numeroAnexo = nomeCompleto.replace(new RegExp('^' + _dadosIniciais.nomeAnexo + '[ ]*'), '');
+            if (numeroAnexo === nomeCompleto) {
+                numeroAnexo = _dadosIniciais.numeroAnexo
+            }
+            _docSEI.nomeAnexo = _dadosIniciais.nomeAnexo;
+            _docSEI.numeroAnexo = _dadosIniciais.numeroAnexo;
+        }
+
+
+    }
+
+    addLinks(links: Link[]) {
+        this.links = links.concat(this.links, links);
+    }
+    private spansChecados: string[] = [];
+
+
+    private checarDocumento(span: HTMLSpanElement) {
+        let id = span.id.match(/span([0-9]+)/)[1];
+        if (this.spansChecados.includes(id)) {
+            return;
+        } else {
+            this.spansChecados.push(id);
+        }
+
+        let rx = /(title=".*")?[ ]*id="span([0-9]+)"[ ]*/;
+        if (rx.test(span.outerHTML)) {
+            let numeroInternoDocumento = rx.exec(span.outerHTML)[2];
+            let numeroDocumentoSEI: string;
+            let nomeCompleto: string;
+            let resultNomeRegex = /^(.+)\s+(?:\(|| )([0-9]+)(?:\)|| )*$/.exec(span.innerText);
+            if (resultNomeRegex) {
+                nomeCompleto = resultNomeRegex[1];
+                numeroDocumentoSEI = resultNomeRegex[2];
+            }
+            let pastaID = (() => {
+                let rx = /divPASTA([0-9]+)/i;
+                let id = span.parentElement.parentElement.id;
+                if (rx.test(id)) {
+                    return parseInt(rx.exec(id)[1]);
+                }
+                return 1;
+            })();
+            if (numeroDocumentoSEI && numeroInternoDocumento && nomeCompleto) {
+                this.getOrCreateData(pastaID, numeroInternoDocumento, numeroDocumentoSEI, nomeCompleto, span);
+            }
+        }
+    }
+
+    checarDocumentos(pastaID?: string) {
+        AnexosTools.desfocarDados(this.window);
+        let selector = "a[target='ifrVisualizacao']>span[id^='span']";
+        if (pastaID) {
+            selector = 'div[id="divPASTA' + pastaID + '"]>a[target="ifrVisualizacao"]>span[id^="span"]';
+        }
+        let _spans = Array.from(this.document.querySelectorAll<HTMLSpanElement>(selector));
+        for (let span of _spans) {
+            this.checarDocumento(span)
+        }
+        this.processarBtns(this.processoAbertoNaUnidade);
+    }
+    private addBtn(div: HTMLDivElement, btnID: string, btnText: string, btnTitle: string, onclick: () => void, color?: string) {
+        let curBtn = <HTMLButtonElement>this.document.getElementById(btnID);
+        let p: HTMLParagraphElement;
+        if (!curBtn) {
+            curBtn = this.document.createElement("button");
+            curBtn.setAttribute("class", "ui-button ui-corner-all ui-widget");
+            curBtn.id = btnID;
+            curBtn.innerText = btnText;
+            curBtn.title = btnTitle;
+            p = this.document.createElement('p');
+            p.append(curBtn);
+            div.append(p);
+            curBtn.onclick = (e) => { e.preventDefault(); onclick() };
+            $(curBtn).button().css({ width: '95%', height: '23px', 'padding-top': '0px', 'padding-bottom': '0px', 'background': color || 'ivory' });
+        } else {
+            curBtn.onclick = (e) => { e.preventDefault(); onclick() };
+        }
+        return { button: curBtn, paragraph: curBtn.parentElement };
+    }
+    afterOnUnload() {
+        this.pastasSEI = [];
+    }
+    private inserirDropZone() {
+        if (!(AnexosTools.getCfg().inserir_drop_zone)) return;
+        this.window.ondrop = async (e) => {
+            e.preventDefault();
+            if (!e.dataTransfer.files || e.dataTransfer.files.length === 0)
+                return;
+            let anexos = await AnexosTools.gerarAnexos(e.dataTransfer.files)
+            this.procedimentoTrabalhar.inserirAnexos(anexos, true);
+        };
+        this.window.ondragover = (e) => {
+            e.preventDefault();
+        };
+        this.window.ondragenter = (e) => {
+            if (!e.dataTransfer || !e.dataTransfer.files)
+                return;
+        };
+        this.window.ondragleave = (e) => {
+            e.preventDefault();
+        };
+    }
+
+
+    getLink(acao: string | string[], valor?: RegExp | string, inValue?: keyof Link) {
+        return new Promise<Link>((resolve, reject) => {
+            let _link: Link;
+            let f = () => {
+                for (let link of this.links) {
+                    let _curAcao: string[];
+                    if (!Array.isArray(acao)) {
+                        _curAcao = [acao];
+                    } else {
+                        _curAcao = acao;
+                    }
+                    for (let _acao of _curAcao)
+                        if (_acao && valor) {
+                            if (link.acao && link.acao === _acao && link[inValue] && link[inValue].trim().match(valor)) {
+                                _link = link;
+                            }
+                        } else if (link.acao && link.acao === _acao) {
+                            _link = link;
+                        }
+                }
+                if (!_link) {
+                    setTimeout(f, 100);
+                } else {
+                    resolve(_link);
+                }
+            }
+            f();
+        })
+
+    }
+
+
+    private addOnChangeDivPastas() {
+        let ifrPasta = <HTMLIFrameElement>this.document.getElementById('ifrPasta');
+        ifrPasta.addEventListener('load', () => {
+            AnexosTools.desfocarDados(this.window);
+            this.procedimentoTrabalhar.procedimentoPaginar.setWindow(ifrPasta.contentWindow);
+            this.checarDocumentos();
+        });
+    }
+
+    async iniciar() {
+        this.spansChecados = [];
+        await super.iniciar();
+        AnexosTools.desfocarDados(this.window);
+        this.links = AnexosTools.loadLinks(this.document);
+        this.addOnChangeDivPastas();
+        this.waitLoadElements('#topmenu>a[target="ifrVisualizacao"]>span').then(async (spans) => {
+            this.procedimentoTrabalhar.numeroSEI = spans[0].innerText.replace(/[ \n\r]/g, '');
+            this.procedimentoTrabalhar.tipoProcessoSEI = spans[0].title.replace(/[\n\r]/g, '');
+            this.lerUnidadesAbertas();
+            this.inserirDropZone();
+            this.checarDocumentos();
+            this.processarBtns(this.processoAbertoNaUnidade);
+        });
+        this.procedimentoTrabalhar.loadFrames(this.document);
+
+    }
+
+
+
+    private async dialogAdicionarArquivosAoFormulario(formularioConfig: FormularioConfig) {
+        let br = this.procedimentoTrabalhar.document.createElement('br');
+        let clicados = await this.getListClicados();
+        let d = this.procedimentoTrabalhar.document.createElement('div');
+        this.procedimentoTrabalhar.document.body.append(d);
+        d.id = 'startDialogFormulariosAnexos';
+        d.title = 'Confirmar/Inserir arquivos para o formulário';
+        d.append(br.cloneNode());
+
+        let labelFiles = this.procedimentoTrabalhar.document.createElement('label');
+        labelFiles.innerText = 'Dados extras: ';
+        labelFiles.title = 'Usar arquivos apenas para coletar de dados'
+        labelFiles.style.paddingRight = '15px'
+        d.append(labelFiles);
+
+
+        let input = this.procedimentoTrabalhar.document.createElement('input');
+        input.multiple = true;
+        input.type = 'file';
+
+        d.append(input);
+
+        d.append(br.cloneNode());
+        d.append(br.cloneNode());
+
+
+        let labelFormulario = this.procedimentoTrabalhar.document.createElement('label');
+        labelFormulario.innerText = 'Usar alterar formulário a ser gerado: ';
+        labelFormulario.style.paddingRight = '15px'
+        d.append(labelFormulario);
+
+
+        let selectFormulario = this.procedimentoTrabalhar.document.createElement('select');
+        AnexosTools.getCfg().formulariosExistentes.forEach((f) => {
+            let op = this.document.createElement('option');
+            op.value = f;
+            op.innerText = f;
+            if (f === formularioConfig.nomeFormulario) op.selected = true;
+            selectFormulario.append(op);
+        })
+
+        d.append(selectFormulario);
+
+        d.append(br.cloneNode());
+        d.append(br.cloneNode());
+
+
+        let labelNivelAcesso = this.procedimentoTrabalhar.document.createElement('label');
+        labelNivelAcesso.innerText = 'Usar alterar o nivel de acesso: ';
+        labelNivelAcesso.style.paddingRight = '15px'
+        d.append(labelNivelAcesso);
+
+
+        let selectNivelAcesso = this.procedimentoTrabalhar.document.createElement('select');
+        ["público", "restrito", "sigiloso"].forEach((a) => {
+            let op = this.document.createElement('option');
+            op.value = a;
+            op.innerText = a;
+            if (a === formularioConfig.nivelAcesso) op.selected = true;
+            selectNivelAcesso.append(op);
+        })
+
+        d.append(selectNivelAcesso);
+
+        d.append(br.cloneNode());
+        d.append(br.cloneNode());
+
+
+
+
+        let labelNumeroModelo = this.procedimentoTrabalhar.document.createElement('label');
+        labelNumeroModelo.innerText = 'Usar um documento modelo existente: ';
+        labelNumeroModelo.title = 'Opcional, usar um documento existente para criar o formulário'
+        labelNumeroModelo.style.paddingRight = '15px'
+        d.append(labelNumeroModelo);
+
+
+        let inputNumeroModelo = this.procedimentoTrabalhar.document.createElement('input');
+        inputNumeroModelo.type = 'number';
+        if (formularioConfig.numeroModelo) inputNumeroModelo.value = formularioConfig.numeroModelo;
+        d.append(inputNumeroModelo);
+
+        let dialog: JQuery<HTMLElement>;
+        let p = new Promise<DocSEI[]>((resolve, reject) => {
+            if (dialog) dialog.html('');
+            dialog = $('#startDialogFormulariosAnexos').dialog({
+                autoOpen: true,
+                height: 400,
+                width: 600,
+                modal: true,
+                buttons: [
+                    {
+                        text: 'Inserir',
+                        id: 'btnFormularioInserir',
+                        click: () => {
+                            if (input.files && input.files.length > 0) {
+                                AnexosTools.gerarAnexos(input.files).then((anexos) => {
+                                    let docs = AnexosTools.gerarDocSEIs(anexos);
+                                    resolve(docs);
+                                })
+                            } else {
+                                resolve([]);
+                            }
+                            dialog.hide();
+                            dialog.empty();
+                            dialog.remove();
+                        }
+                    },
+                    {
+                        text: 'Cancelar',
+                        id: 'btnFormularioCancelar',
+                        click: () => {
+                            resolve(null);
+                            dialog.hide();
+                            dialog.empty();
+                            dialog.remove();
+                        }
+                    }
+                ]
+            });
+        });
+        dialog.dialog('open');
+        this.procedimentoTrabalhar.waitLoadElements('#btnFormularioInserir').then((btn) => {
+            let btnFormularioInserir = btn[0];
+            if (btnFormularioInserir) btnFormularioInserir.focus();
+        });
+        let docs = await p;
+
+        formularioConfig.numeroModelo = inputNumeroModelo.value;
+        formularioConfig.nomeFormulario = selectFormulario.value;
+        formularioConfig.nivelAcesso = <NivelAcesso>selectNivelAcesso.value;
+
+
+
+        d.remove();
+        if (docs) {
+            return clicados.concat(docs);
+        } else {
+            return null;
+        }
+    }
+
+
+
+    async processarBtns(seiAbertoNaUnidade: boolean) {
+        let divs = <HTMLDivElement[]>await this.waitLoadElements('#divArvore>div');
+        let processos = AnexosTools.getCfg().processosConfig;
+        let btn_reabrirProcesso = this.addBtn(divs[0], 'btn_reabrirProcesso', 'Reabrir processo?', 'Reabre o processo na unidade', async () => {
+            let ok = confirm('Deseja reabrir o processo na unidade?');
+            if (ok) {
+                this.procedimentoTrabalhar.arvoreVisualizar.reabrirProcesso();
+            }
+        });
+        let headHtml = this.document.head.innerHTML;
+        !seiAbertoNaUnidade && headHtml.match(/reabrirProcesso\(\)/) ? btn_reabrirProcesso.paragraph.hidden = false : btn_reabrirProcesso.paragraph.hidden = true;
+
+        if (AnexosTools.getCfg().inserir_anexos) {
+            let btn = this.addBtn(divs[0], 'btnAnexar', "Anexar Arquivo(s)", "Anexar arquivo(s).", () => {
+                (<HTMLFormElement>document.getElementById('formFileUpload')).reset();
+                this.procedimentoTrabalhar.document.getElementById('inputFileUpload').click();
+            }, 'LemonChiffon');
+            seiAbertoNaUnidade ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+        }
+        if (AnexosTools.getCfg().alterar_acesso_documento) {
+            let btn = this.addBtn(divs[0], 'btnAlterarnivelDoAcesso', "Alterar nivel de acesso", "Alterar nivel de acesso dos documentos selecionados", () => {
+                this.getListClicados().then(async (clicados) => {
+                    let dialogResult: DialogTrabalharResult;
+                    for (let docSEI of clicados) {
+                        dialogResult = await this.procedimentoTrabalhar.documentoAlterar.alterarNivelDeAcesso(docSEI, dialogResult);
+                    }
+                });
+
+            }, 'salmon ');
+            this.getListClicados().then((clicados) => {
+                clicados.length > 0 ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+            })
+            seiAbertoNaUnidade ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+        }
+        if (AnexosTools.getCfg().copiar_lista) {
+            let btn = this.addBtn(divs[0],
+                'btnCopiarTodos',
+                "Lista Simples",
+                "Copiar nomes marcados no formato de uma lista simples",
+                () => { this.copiarTodosClicados('LISTA'); },
+                'LightGoldenrodYellow');
+            this.getListClicados().then((clicados) => {
+                clicados.length > 0 ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+            })
+        }
+
+        if (AnexosTools.getCfg().copiar_lista_numerada) {
+            let btn = this.addBtn(divs[0], 'btnCopiarTodosMarcadores', "Lista Com Marcadores", "Copiar nomes marcados no formato de uma lista com marcadores", () => {
+                this.copiarTodosClicados('LISTA_COM_MARCADORES');
+            }, 'Moccasin');
+            this.getListClicados().then((clicados) => {
+                clicados.length > 0 ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+            })
+        }
+
+        if (AnexosTools.getCfg().copiar_lista_numerada) {
+            let btn = this.addBtn(divs[0], 'btnCopiarTodosNumerados', "Lista Numerada", "Copiar nomes marcados no formato de uma lista numerada", () => {
+                this.copiarTodosClicados('LISTA_NUMERADA');
+            }, 'PaleGoldenrod');
+            this.getListClicados().then((clicados) => {
+                clicados.length > 0 ? btn.paragraph.hidden = false : btn.paragraph.hidden = true;
+            })
+        }
+
+
+
+
+        let formularios = AnexosTools.getCfg().formulariosConfig;
+        for (let formulario of formularios) {
+            let btnName = 'btn_f_' + (<string>formulario.nomeFormulario).replace(/[\(\)\[\]\{\}\*\.\\\- \<\>\:\/]/ig, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            if ((formulario.btnGerarFormulario || formulario.sempreMostarBtn) && !formulario.desativado) {
+                let btn = this.addBtn(divs[0], btnName, formulario.nome, formulario.descricaoDoFormulario, async () => {
+                    // formulario = JSON.parse(JSON.stringify(formulario));
+                    let docSEIs = await this.dialogAdicionarArquivosAoFormulario(formulario);
+                    if (docSEIs !== null)
+                        this.procedimentoTrabalhar.inserirFormulario.criarFormulario(formulario, docSEIs);
+                }, formulario.btnColor);
+
+                if (seiAbertoNaUnidade) {
+                    if (formulario.sempreMostarBtn) {
+                        btn.paragraph.hidden = false;
+                    } else {
+                        let hidden = true;
+                        let documentos: DocSEI[] = await this.getListClicados();
+                        documentos.forEach((doc) => {
+                            if (!formulario.filtrarNomes || formulario.filtrarNomes.includes(<string>doc.nomeAnexo)) {
+                                hidden = false;
+                            }
+                        });
+                        btn.paragraph.hidden = hidden;
+                    }
+
+                } else {
+                    btn.paragraph.hidden = true;
+                }
+            }
+        }
+        //ALTERAR DESCRIÇÃO PROCESSO
+        for (let processo of processos) {
+            let btnName = processo.nome.replace(/[\(\)\[\]\{\}\*\.\\\- \<\>\:\/]/ig, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            if (processo.btnAlterarProcesso) {
+                let btn = this.addBtn(divs[0], 'btn_alterar_processo_' + btnName, 'Alterar processo: ' + processo.nome, processo.descricaoDoProcesso, async () => {
+                    let ok = confirm('Alterar as informações com base no modelo: ' + processo.nome + '?');
+                    if (ok) {
+                        let docs = await this.getListClicados();
+                        if (docs.length == 0) {
+                            alert('favor selecionar pelo menos um documento.');
+                            return;
+                        }
+                        await this.procedimentoTrabalhar.procedimentoAlterar.abrirFormularioDoProcesso();
+                        this.procedimentoTrabalhar.procedimentoAlterar.alterarDadosProcesso(processo, docs);
+                    }
+                }, processo.btnColor);
+
+                if (seiAbertoNaUnidade && processo.tipoProcesso.some((t) => { return t === this.procedimentoTrabalhar.tipoProcessoSEI; })) {
+                    let hidden = true;
+                    let documentos: DocSEI[] = await this.getListClicados();
+                    documentos.some((doc) => {
+                        let formulario = AnexosTools.getFormulario(processo.formulario);
+                        if (formulario) {
+                            if (!formulario.filtrarNomes || formulario.filtrarNomes.includes(<string>doc.nomeAnexo)) {
+                                hidden = false;
+                                return true;
+                            }
+                        } else {
+                            hidden = false;
+                            return true;
+                        }
+                        return false;
+                    });
+                    btn.paragraph.hidden = hidden;
+                } else {
+                    btn.paragraph.hidden = true;
+                }
+            }
+        }
+
+
+        //GERAR RELACIONADO
+        for (let processo of processos) {
+            let btnName = processo.nome.replace(/[\(\)\[\]\{\}\*\.\\\- \<\>\:\/]/ig, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            if (processo.btnGerarProcessoRelacionado) {
+                let btn = this.addBtn(divs[0], 'btn_gerar_processo_' + btnName, 'Gerar relacionado: ' + processo.nome, processo.descricaoDoProcesso, async () => {
+                    let ok = confirm('Gerar processo relacionado: ' + processo.tipoProcesso[0] + '?');
+                    if (ok) await this.procedimentoTrabalhar.gerarProcessoRelacionado.gerarProcesso(processo);
+                }, processo.btnColor);
+                if (seiAbertoNaUnidade) {
+                    let hidden = true;
+                    let documentos: DocSEI[] = await this.getListClicados();
+                    documentos.some((doc) => {
+                        if (processo.btnGerarProcessoRelacionadoSe && processo.btnGerarProcessoRelacionadoSe.includes(<string>doc.nomeAnexo)) {
+                            hidden = false;
+                            return true;
+                        }
+                        return false;
+                    });
+                    btn.paragraph.hidden = hidden;
+                } else {
+                    btn.paragraph.hidden = true;
+                }
+            }
+        }
+
+    }
+
+
+
+
+    lerUnidadesAbertas() {
+        let rx = /Nos\[0\]\.html \= '(.*)';/i
+        let headHtml = this.document.head.innerHTML;
+        if (headHtml.length === 0) return;
+        let a = rx.exec(headHtml)[1];
+        let p = this.document.createElement('p');
+        p.innerHTML = a;
+        this.processoAbertoNasUnidades = [];
+        let unidadeAtual = this.procedimentoTrabalhar.unidadeAtual;
+        for (let anchor of Array.from(p.querySelectorAll('a'))) {
+            let curUnidade = anchor.innerText;
+            this.processoAbertoNasUnidades.push(curUnidade);
+            if (curUnidade === unidadeAtual) {
+                this.processoAbertoNaUnidade = true;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Configuração</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    .
+    <script src="../comunicacaoBGWorker.js"></script>
+    <script src="popup.js"></script>
+
+</head>
+
+<body>
+    <div class="container-sm bg-gradient">
+        <div class="text-nowrap row">
+            <h3>Tela Trabalhar:</h3>
+            <div class="col-1"></div>
+            <div class="col-11" id="telaTrabalhar" style="font-size:.8em">
+
+                <div class="form-check" hidden="true">
+                    <input class="form-check-input" type="checkbox" id="manter_atualizado_procedimentos" name="manter_atualizado_procedimentos" valor="manter_atualizado_procedimentos">
+                    <label class="form-check-label" for="manter_atualizado_procedimentos" title="caso a configuração do usuário conter configurações de formularios, de processos, de expressões regulares ou de PDF, quando irá atualizar automaticamente com a da nova versão da extensão que for baixada">Sempre usar arquivos da extensão</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inserir_drop_zone" name="inserir_drop_zone" valor="inserir_drop_zone">
+                    <label class="form-check-label" for="inserir_drop_zone">Inserir dropzone para anexos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inserir_anexos" name="inserir_anexos" valor="inserir_anexos">
+                    <label class="form-check-label" for="inserir_anexos">Inserir anexos</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="copiar_lista" name="copiar_lista" valor="copiar_lista">
+                    <label class="form-check-label" for="copiar_lista">Copiar lista simples</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="copiar_lista_numerada" name="copiar_lista_numerada" valor="copiar_lista_numerada">
+                    <label class="form-check-label" for="copiar_lista_numerada">Copiar lista numerada</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="testar_formulario" name="testar_formulario">
+                    <label class="form-check-label" for="testar_formulario">Testar formulário</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="text-nowrap row">
+            <h3>Tela Controlar:</h3>
+            <div class="col-1"></div>
+            <div class="col-11" id="telaControlar" style="font-size:.8em">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="filtrar_processos" name="filtrar_processos" valor="filtrar_processos">
+                    <label class="form-check-label" for="filtrar_processos">Filtrar processos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="prazo_processos" name="prazo_processos" valor="prazo_processos">
+                    <label class="form-check-label" for="prazo_processos">Possibilitar a organizar os processos por prazo</label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <p><button class="btn btn-danger" type="menu" id="cfg">Configurações avançadas</button></p>
+        <pre id="log"></pre>
+    </div>
+
+</body>
+
+</html>

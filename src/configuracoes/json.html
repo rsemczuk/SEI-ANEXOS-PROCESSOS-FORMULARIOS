@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Configuração</title>
+
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.min.css">
+    <link rel="stylesheet" href="../lib/tom-select/css/tom-select.bootstrap5.min.css">
+    <script src="../lib/tom-select/js/tom-select.complete.min.js"></script>
+
+    <script src="../lib/pdf.worker.js"></script>
+    <script src="../lib/pdf.js"></script>
+    <script src="../modules/tools/Geral.js"></script>
+    <script src="../modules/tools/ExtrairDados.js"></script>
+    <script src="../comunicacaoBGWorker.js"></script>
+    <script src="json.js"></script>
+
+
+
+
+    <style>
+        [type="select-multiple"] {
+            width: 100%;
+        }
+        
+        .vertical {
+            white-space: nowrap;
+            align-self: center;
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            text-align: center;
+            /* flex: 1;  */
+        }
+        
+        .table_procuras>tbody>tr:nth-child(even)>td:nth-child(1) {
+            background: #CCCC;
+        }
+        
+        .table_paragrafos>tbody>tr:nth-child(odd)>td:nth-child(1) {
+            background: #CCCC;
+        }
+    </style>
+</head>
+
+<body style="background-color: aliceblue;">
+    <div class="container">
+        <!-- menu -->
+        <div class="tab-content" id="myTabContent">
+            <!-- menu content home-->
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="border border-1 border-dark row justify-content-center">
+                    <div class="p-3 input-group col-10 row">
+                        <label class="input-group-text col-10 bg-white">Restaurar configuração original da extensão</label>
+                        <button class="form-control col-2 btn-danger" type="button" id="resetAll">Restaurar</button>
+                    </div>
+                </div>
+                <pre id="home_log"></pre>
+            </div>
+            <!-- menu content home-->
+        </div>
+    </div>
+
+</body>
+
+</html>

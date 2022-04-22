@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Configuração</title>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../comunicacaoBGWorker.js"></script>
+    <script src="main.js"></script>
+
+</head>
+
+<body>
+    <div class="container-sm bg-gradient">
+        <div id="alert" class="alert alert-dismissible fade" role="alert">
+            <ul id="alert_itens" class="ml-5">
+
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <br>
+        <hr>
+        <div class="row justify-content-center">
+            <div class="p-3 input-group col-12 row">
+                <button class="btn btn-outline-secondary col-3" type="button" id="btn_editar_json">Acessar arquivos de configuração</button>
+                <button class="btn btn-outline-secondary col-3" type="button" id="btn_editar_texto">Acessar configurações de texto ou nome de arquivos</button>
+                <button class="btn btn-outline-secondary col-3" type="button" id="btn_editar_formularios">Acessar configurações de criação de formulários</button>
+                <button class="btn btn-outline-danger col-3" type="button" id="resetAll">Restaurar configuração</button>
+            </div>
+        </div>
+
+        <br>
+        <div class="text-nowrap">
+            <hr>
+            <h3>Tela Trabalhar:</h3>
+            <div  class="container" id="telaTrabalhar">
+
+                <div class="form-check" hidden="true">
+                    <input class="form-check-input" type="checkbox" id="manter_atualizado_procedimentos" name="manter_atualizado_procedimentos" valor="manter_atualizado_procedimentos">
+                    <label class="form-check-label" for="manter_atualizado_procedimentos" title="caso a configuração do usuário conter configurações de formularios, de processos, de expressões regulares ou de PDF, quando irá atualizar automaticamente com a da nova versão da extensão que for baixada">Sempre usar arquivos da extensão</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inserir_drop_zone" name="inserir_drop_zone" valor="inserir_drop_zone">
+                    <label class="form-check-label" for="inserir_drop_zone">Inserir dropzone para anexos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="inserir_anexos" name="inserir_anexos" valor="inserir_anexos">
+                    <label class="form-check-label" for="inserir_anexos">Inserir anexos</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="copiar_lista" name="copiar_lista" valor="copiar_lista">
+                    <label class="form-check-label" for="copiar_lista">Copiar lista simples</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="copiar_lista_numerada" name="copiar_lista_numerada" valor="copiar_lista_numerada">
+                    <label class="form-check-label" for="copiar_lista_numerada">Copiar lista numerada</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mostrar_check_copy" name="mostrar_check_copy">
+                    <label class="form-check-label" for="mostrar_check_copy">Mostrar marcação de processos e botão de copiar número do processo somente quando o mouse estiver em cima</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="mostrar_copy" name="mostrar_copy">
+                    <label class="form-check-label" for="mostrar_copy">Mostrar botão de copiar número do processo</label>
+                </div>       
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="alterar_acesso_documento" name="alterar_acesso_documento">
+                    <label class="form-check-label" for="alterar_acesso_documento">Mostrar opção para alterar nivel de acesso dos documentos</label>
+                </div> 
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="copiar_link_externo" name="copiar_link_externo">
+                    <label class="form-check-label" for="copiar_link_externo">Mostrar opção para copiar link externo/público</label>
+                </div> 
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formatarNumeroAnexoNumeros" name="formatarNumeroAnexoNumeros">
+                    <label class="form-check-label" for="formatarNumeroAnexoNumeros">Separar em grupos de três algarismos quando o número do anexo for valor numérico</label>
+                </div>    
+
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formatarNumeroAnexoMesAno" name="formatarNumeroAnexoMesAno">
+                    <label class="form-check-label" for="formatarNumeroAnexoMesAno">Formatar valores com mês e ano com barra: ex. 08-2020 --> 08/2020</label>
+                </div>    
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formatarNumeroAnexoDiaMesAno" name="formatarNumeroAnexoDiaMesAno">
+                    <label class="form-check-label" for="formatarNumeroAnexoDiaMesAno">Formatar valores com dia, mês e ano com barra: ex. 01-08-2020 --> 01/08/2020</label>
+                </div>    
+
+
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="testar_formulario" name="testar_formulario">
+                    <label class="form-check-label" for="testar_formulario">Testar formulário</label>
+                </div>
+                                
+                <hr>
+                <h3>Tela Controlar:</h3>
+                <div id="telaControlar">
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" id="filtrar_processos" name="filtrar_processos" valor="filtrar_processos">
+                        <label class="form-check-label" for="filtrar_processos">Filtrar processos</label>
+                    </div>
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" id="prazo_processos" name="prazo_processos" valor="prazo_processos">
+                        <label class="form-check-label" for="prazo_processos">Possibilitar a organizar os processos por prazo</label>
+                    </div>
+                </div>
+                
+                <hr>
+                <h5>Formulários:</h5>
+                <div class="container" id="formularios">
+                    <div class="row ml-3" id="formularioModel">
+                        <div class="col-4">
+                            <span class="form-check-label ml-2"  id="nome" ></span>
+                        </div>                        
+                        <div class="form-check col-2">
+                            <input class="form-check-input" type="checkbox" id="gerar">
+                            <label class="form-check-label ml-2" style="user-select: none;" title="Mostra o botão de gerar formulário quando um documento compatível for selecionado">Mostrar se</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <input class="form-check-input" type="checkbox" id="sempreMostrar">
+                            <label class="form-check-label ml-2" style="user-select: none;" title="mostra o botão de gerar formulário mesmo quando nenhum documento compatível for selecionado, serve gerar o formulário a partir de um documento temporário (selecionar o documento temporário quando clicar no botão) ou simplismente para criar o formulário em branco">Sempre mostrar</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <input class="form-check-input" type="checkbox" id="desativar">
+                            <label class="form-check-labell ml-2" style="user-select: none;">Desativar formulário</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <button class="btn btn-outline-secondary btn-sm border-0" type="button" id="editar">Editar</button>
+                        </div>
+                    </div>
+                 </div>
+                
+                <hr>
+                <h5>Processos:</h5>
+                <div class="container" id="processos">
+                    <div class="row ml-3" id="processoModel">
+                        <div class="col-4">
+                            <span class="form-check-label ml-2"  id="nome" ></span>
+                        </div>     
+                        <div class="form-check col-2">
+                            <span id="nome"></span>
+                            <input class="form-check-input" type="checkbox" id="gerar">
+                            <label class="form-check-label ml-2" style="user-select: none;"  title="Adicionar a tela de controle de processos para gerar um processo">Gerar</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <input class="form-check-input" type="checkbox" id="alterar">
+                            <label class="form-check-label ml-2" style="user-select: none;"  title="Altera as informações do processo a partir dos dados do documento selecionado">Alterar processo</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <input class="form-check-input" type="checkbox" id="relacionado">
+                            <label class="form-check-label ml-2" style="user-select: none;" title="Mostra o botão para gerar um processo relacionado  quando um documento compatível for selecionado">Gerar relacionado</label>
+                        </div>
+                        <div class="form-check col-2">
+                            <button class="btn btn-outline-secondary btn-sm border-0" type="button" disabled="disabled" id="editar">Editar</button>
+                        </div>
+
+                    </div>
+                 </div>
+
+
+
+
+            </div>
+
+
+        </div>
+        <br>
+        <pre id="log"></pre>
+    </div>
+
+</body>
+
+</html>
