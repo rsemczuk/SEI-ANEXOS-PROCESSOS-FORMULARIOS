@@ -62,7 +62,6 @@ class ProcedimentoGerarProcessoSEI extends ProcedimentoControlarClassModel {
                 if (!link) { console.log('Link não encontrado'); return; }
                 let window_procedimento_gerar = this.procedimentoControlar.window.open(link.link);
                 await AnexosTools.onWindowload(window_procedimento_gerar);
-                AnexosTools.desfocarDados(window_procedimento_gerar);
                 // this.procedimentoControlar.procedimentoGerar.setWindow(window_procedimento_gerar);
                 await this.procedimentoControlar.procedimentoGerar.preencherFormulario(processoConfig, AnexosTools.gerarDocSEIs(anexos), null, this.procedimentoControlar);
                 await this.procedimentoControlar.waitLoadProcedimentoTrabalhar();

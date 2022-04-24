@@ -1,3 +1,4 @@
+
 class ProcedimentoTrabalhar extends AbstractSubClassEngine {
     arvoreVisualizar: ProcedimentoArvoreVisualizar;
     procedimentoVisualizar: ProcedimentoVisualizar;
@@ -28,6 +29,7 @@ class ProcedimentoTrabalhar extends AbstractSubClassEngine {
     tipoProcessoSEI: string;
     unidadeAtual: string;
     idProcedimento: string;
+    linksExternos: Map<string, string> = new Map();
 
     constructor() {
         super();
@@ -128,7 +130,6 @@ class ProcedimentoTrabalhar extends AbstractSubClassEngine {
     }
 
     async iniciar() {
-        AnexosTools.desfocarDados(this.window);
         await super.iniciar();
         this.escolherTipoDocumento.preLoad();
         this.addHiddenInputFile();
@@ -230,6 +231,43 @@ class ProcedimentoTrabalhar extends AbstractSubClassEngine {
             }
         }
         let linkExternoProcessoSEI: string;
+
+
+
+        let carregarDocSEI = (link: string, txtLink: string) => {
+            docSEIs.some((docSEI) => {
+                if (txtLink.trim() === docSEI.numeroDePesquisaSei.trim()) {
+                    docSEI.LINK_EXTERNO = '<a href="' + link + '" target="_blank">' + docSEI.numeroDePesquisaSei + '</a>';
+                    docSEI.linkExterno = link;
+                    let arnchor = <HTMLAnchorElement>this.procedimentoVisualizar.document?.getElementById('anchor' + docSEI.numeroInternoDoDocumento);
+                    if (arnchor && arnchor.href === 'about:blank') {
+                        arnchor.href = link;
+                        arnchor.querySelector('span')?.removeAttribute('style');
+                        arnchor.onclick = () => {
+                            let ifrVisualizacao = <HTMLIFrameElement>this.document.getElementById('ifrVisualizacao');
+                            if (ifrVisualizacao) {
+                                ifrVisualizacao.contentDocument.location.href = arnchor.href;
+                            }
+                        }
+                    }
+                    return true;
+                }
+                return false;
+            });
+        }
+
+
+        if (this.linksExternos.values.length > 0) {
+            docSEIs.forEach((docSEI) => {
+                let href = this.linksExternos.get(docSEI.numeroDePesquisaSei);
+                if (href) {
+                    carregarDocSEI(href, docSEI.numeroDePesquisaSei);
+                }
+            });
+            return docSEIs;
+        }
+
+
         let pesquisarProcesso = await pesquisar(null, null, this.numeroSEI);
         let anchors = pesquisarProcesso.querySelectorAll('a');
         for (let index = 0; index < anchors.length; index++) {
@@ -244,21 +282,22 @@ class ProcedimentoTrabalhar extends AbstractSubClassEngine {
             let documentoProcesso = <Document>abrirDocumentosProcesso.response;
             if (documentoProcesso) {
                 let anchors = documentoProcesso.querySelectorAll('a');
-                docSEIs.forEach((docSEI) => {
-                    for (let index = 0; index < anchors.length; index++) {
-                        let a = anchors[index];
-                        if (a.innerText.trim().length > 0 && (a.innerText.trim() === docSEI.numeroDePesquisaSei.trim())) {
-                            let rc = /\('(?<link>.*)'\)/;
-                            let arr = rc.exec(a.outerHTML);
-                            if (arr) {
-                                a.href = arr.groups.link;
-                                docSEI.LINK_EXTERNO = '<a href="' + a.href + '" target="_blank">' + docSEI.numeroDePesquisaSei + '</a>';
-                                docSEI.linkExterno = a.href;
-                            }
-                            break;
+
+                for (let index = 0; index < anchors.length; index++) {
+                    let a = anchors[index];
+
+                    if (a.innerText.trim().length > 0) {
+                        let rc = /\('(?<link>.*)'\)/;
+                        let arr = rc.exec(a.outerHTML);
+                        if (arr) {
+                            a.href = arr.groups.link;
+                            this.linksExternos.set(a.innerText.trim(), a.href);//carregar links externos
+                            carregarDocSEI(a.href, a.innerText);
                         }
                     }
-                });
+                }
+
+
 
             }
         }
@@ -450,7 +489,6 @@ class ProcedimentoTrabalhar extends AbstractSubClassEngine {
 
 
     handlerVisualização(acao: string, window: Window) {
-        AnexosTools.desfocarDados(window);
         switch (acao) {
             case 'procedimento_visualizar': {
                 if (this.verbose) console.log('VIEW: procedimento_visualizar');

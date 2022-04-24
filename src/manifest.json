@@ -3,7 +3,7 @@
     "name": "SEI - ANEXOS & PROCESSOS & FORMULÁRIOS",
     "short_name": "ARQUIVOS SEI",
     "description": "Inclui ferramentas para inserir anexos, gerar formulários e gerar processos de forma automatizada",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "author": "RS",
     "icons": {
         "16": "icons/AUTO_SEI_16.png",

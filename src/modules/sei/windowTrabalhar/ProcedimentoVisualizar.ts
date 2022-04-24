@@ -291,9 +291,13 @@ class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
         if (!imgCopiar) {
             imgCopiar = document.createElement('img');
             imgCopiar.id = "img_nivel_acesso_" + docSEI.numeroInternoDoDocumento;
-            if (docSEI.estaCancelado) {
+            
+            if (!this.processoAbertoNaUnidade) {
                 imgCopiar.src = this.srcImgAlterarnivelAcessoCancelado;
-                imgCopiar.title = "Não é possível alterar o nivel de acesso do documento";
+                imgCopiar.title = "É preciso que processo esteja na unidade para alterar o nivel de acesso do documento";
+            } else if (docSEI.estaCancelado) {
+                imgCopiar.src = this.srcImgAlterarnivelAcessoCancelado;
+                imgCopiar.title = "O documento está cancelado, não é possível alterar o nivel de acesso";
             } else {
                 imgCopiar.src = this.srcImgAlterarnivelAcesso;
                 imgCopiar.title = "Alterar o nivel de acesso do documento";
@@ -560,7 +564,6 @@ class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
     }
 
     checarDocumentos(pastaID?: string) {
-        AnexosTools.desfocarDados(this.window);
         let selector = "a[target='ifrVisualizacao']>span[id^='span']";
         if (pastaID) {
             selector = 'div[id="divPASTA' + pastaID + '"]>a[target="ifrVisualizacao"]>span[id^="span"]';
@@ -568,6 +571,9 @@ class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
         let _spans = Array.from(this.document.querySelectorAll<HTMLSpanElement>(selector));
         for (let span of _spans) {
             this.checarDocumento(span)
+        }
+        if (!this.processoAbertoNaUnidade) {
+            this.procedimentoTrabalhar.carregarLinkExterno(this.getDocSEIs());
         }
         this.processarBtns(this.processoAbertoNaUnidade);
     }
@@ -650,7 +656,6 @@ class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
     private addOnChangeDivPastas() {
         let ifrPasta = <HTMLIFrameElement>this.document.getElementById('ifrPasta');
         ifrPasta.addEventListener('load', () => {
-            AnexosTools.desfocarDados(this.window);
             this.procedimentoTrabalhar.procedimentoPaginar.setWindow(ifrPasta.contentWindow);
             this.checarDocumentos();
         });
@@ -659,7 +664,6 @@ class ProcedimentoVisualizar extends ProcedimentoTrabalharClassModel {
     async iniciar() {
         this.spansChecados = [];
         await super.iniciar();
-        AnexosTools.desfocarDados(this.window);
         this.links = AnexosTools.loadLinks(this.document);
         this.addOnChangeDivPastas();
         this.waitLoadElements('#topmenu>a[target="ifrVisualizacao"]>span').then(async (spans) => {

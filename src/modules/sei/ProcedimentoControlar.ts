@@ -109,7 +109,6 @@ class ProcedimentoControlar extends AbstractSubClassEngine {
 
     }
     async iniciar() {
-        AnexosTools.desfocarDados(this.window);
         await super.iniciar();
         pdfjsLib.GlobalWorkerOptions.workerSrc = this.document.scripts.namedItem('lib/pdf.worker.js').src;
         await this.loadFiltrarProcessos();
